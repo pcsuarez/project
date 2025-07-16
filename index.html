@@ -1,0 +1,236 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+  <meta charset="UTF-8" /> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/> 
+  <title>Pokémon Go Web Store</title> 
+  <link rel="stylesheet" href="style.css" /> 
+  <link 
+href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap
+" rel="stylesheet"> 
+</head> 
+ 
+<body> 
+ 
+  <header class="top-bar"> 
+    <div class="top-left"> 
+      <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Poké_Ball_icon.svg"
+      alt="Pokeball Logo" 
+      class="pokeball-icon"> 
+ 
+      <nav class="main-nav"> 
+        <a href="#">News</a> 
+        <a href="#">Seasons</a> 
+        <a href="#">Events</a> 
+        <a href="#">Community</a> 
+        <a href="#">Leaderboard</a> 
+      </nav> 
+ 
+    </div> 
+ 
+    <div class="top-right"> 
+      <button class="menu-btn">SHOP</button> 
+      <a href="login page/login.html" class="menu-btn">NAME</a> 
+    </div> 
+  </header> 
+ 
+  <div class="subnav"> 
+    <a href="index.html">Web Store</a> 
+    <a href="Events/event.html">Event Ticketing</a> 
+    <a href="#">Code Redemption</a> 
+    <div class="user-info">
+      0 PokéCoins | Poké Basket (0)
+    </div>
+    <div class="cart-popup">
+      <h3>Your Poké Basket</h3>
+      <ul class="cart-items"></ul>
+      <p class="cart-total">Total: 0 PokéCoins</p>
+    </div>
+
+
+  </div> 
+ 
+  <main class="hero-section"> 
+ 
+    <div class="hero-textbox"> 
+ 
+      <h1>The <span class="highlight">official</span> Web Store for <br>POKÉMON GO</h1>
+      <p><em>Discover exclusive offers and earn points with every purchase to unlock special rewards. Learn more.</em></p> 
+ 
+      <div class="links-row"> 
+        <section id="limited-time" class="category">
+          <h2>Limited Time Offers</h2>
+          <div class="products-container">
+            <div class="product-card">
+              <img src="assets/limited1.png" alt="Product 1">
+              <h3>Special Box A</h3>
+              <p>Price: 500 PokéCoins</p>
+              <button class="add-to-cart">Add to Cart</button>
+            </div>
+            <div class="product-card">
+              <img src="assets/limited2.png" alt="Product 2">
+              <h3>Special Box B</h3>
+              <p>Price: 800 PokéCoins</p>
+              <button class="add-to-cart">Add to Cart</button>
+            </div>
+            <div class="product-card">
+              <img src="assets/limited3.png" alt="Product 3">
+              <h3>Special Box C</h3>
+              <p>Price: 1200 PokéCoins</p>
+              <button class="add-to-cart">Add to Cart</button>
+            </div>
+          </div>
+        </section>
+
+        <section id="Ticket Bundles" class="category">
+          <h2>Ticket Bundles</h2>
+          <div class="products-container">
+            <div class="product-card">
+              <img src="assets/tb1.png" alt="Product 1">
+              <h3>Special Box A</h3>
+              <p>Price: 500 PokéCoins</p>
+              <button class="add-to-cart">Add to Cart</button>
+            </div>
+            <div class="product-card">
+              <img src="assets/tb2.png" alt="Product 2">
+              <h3>Special Box B</h3>
+              <p>Price: 800 PokéCoins</p>
+              <button class="add-to-cart">Add to Cart</button>
+            </div>
+          </div>
+        </section>
+
+        <section id="Item Bundles" class="category">
+          <h2>Item Bundles</h2>
+          <div class="products-container">
+            <div class="product-card">
+              <img src="assets/ib1.png" alt="Product 1">
+              <h3>Special Box A</h3>
+              <p>Price: 500 PokéCoins</p>
+              <button class="add-to-cart">Add to Cart</button>
+            </div>
+          </div>
+        </section>
+
+        <section id="Item" class="category">
+          <h2>Item</h2>
+          <div class="products-container">
+            <div class="product-card">
+              <img src="assets/items1.png" alt="Product 1">
+              <h3>Special Box A</h3>
+              <p>Price: 500 PokéCoins</p>
+              <button class="add-to-cart">Add to Cart</button>
+            </div>
+            <div class="product-card">
+              <img src="assets/items1.png" alt="Product 1">
+              <h3>Special Box A</h3>
+              <p>Price: 500 PokéCoins</p>
+              <button class="add-to-cart">Add to Cart</button>
+            </div>
+            <div class="product-card">
+              <img src="assets/items1.png" alt="Product 1">
+              <h3>Special Box A</h3>
+              <p>Price: 500 PokéCoins</p>
+              <button class="add-to-cart">Add to Cart</button>
+            </div>
+            <div class="product-card">
+              <img src="assets/items1.png" alt="Product 1">
+              <h3>Special Box A</h3>
+              <p>Price: 500 PokéCoins</p>
+              <button class="add-to-cart">Add to Cart</button>
+            </div>
+            <div class="product-card">
+              <img src="assets/items1.png" alt="Product 1">
+              <h3>Special Box A</h3>
+              <p>Price: 500 PokéCoins</p>
+              <button class="add-to-cart">Add to Cart</button>
+            </div>
+            <div class="product-card">
+              <img src="assets/items1.png" alt="Product 1">
+              <h3>Special Box A</h3>
+              <p>Price: 500 PokéCoins</p>
+              <button class="add-to-cart">Add to Cart</button>
+            </div>
+          </div>
+        </section>
+
+        <section id="PokeCoins" class="category">
+          <h2>PokeCoins</h2>
+          <div class="products-container">
+            <div class="product-card">
+              <img src="assets/c1.png" alt="Product 1">
+              <h3>Special Box A</h3>
+              <p>Price: 500 PokéCoins</p>
+              <button class="add-to-cart">Add to Cart</button>
+            </div>
+            <div class="product-card">
+              <img src="assets/c2.png" alt="Product 1">
+              <h3>Special Box A</h3>
+              <p>Price: 500 PokéCoins</p>
+              <button class="add-to-cart">Add to Cart</button>
+            </div>
+            <div class="product-card">
+              <img src="assets/c3.png" alt="Product 1">
+              <h3>Special Box A</h3>
+              <p>Price: 500 PokéCoins</p>
+              <button class="add-to-cart">Add to Cart</button>
+            </div>
+            <div class="product-card">
+              <img src="assets/c4.png" alt="Product 1">
+              <h3>Special Box A</h3>
+              <p>Price: 500 PokéCoins</p>
+              <button class="add-to-cart">Add to Cart</button>
+            </div>
+            <div class="product-card">
+              <img src="assets/c5.png" alt="Product 1">
+              <h3>Special Box A</h3>
+              <p>Price: 500 PokéCoins</p>
+              <button class="add-to-cart">Add to Cart</button>
+            </div>
+            <div class="product-card">
+              <img src="assets/c6.png" alt="Product 1">
+              <h3>Special Box A</h3>
+              <p>Price: 500 PokéCoins</p>
+              <button class="add-to-cart">Add to Cart</button>
+            </div>
+          </div>
+        </section>
+
+        <section id="Daily Bundles" class="category">
+          <h2>Limited Time Offers</h2>
+          <div class="products-container">
+            <div class="product-card">
+              <img src="assets/db1.png" alt="Product 1">
+              <h3>Special Box A</h3>
+              <p>Price: 500 PokéCoins</p>
+              <button class="add-to-cart">Add to Cart</button>
+            </div>
+            <div class="product-card">
+              <img src="assets/db2.png" alt="Product 2">
+              <h3>Special Box B</h3>
+              <p>Price: 800 PokéCoins</p>
+              <button class="add-to-cart">Add to Cart</button>
+            </div>
+            <div class="product-card">
+              <img src="assets/db3.png" alt="Product 3">
+              <h3>Special Box C</h3>
+              <p>Price: 1200 PokéCoins</p>
+              <button class="add-to-cart">Add to Cart</button>
+            </div>
+          </div>
+        </section>
+
+      </div> 
+    </div> 
+    <div class="hero-character"> 
+      <img src="assests/uwu.jpg" alt="uwu " /> 
+    </div> 
+    <button id="toggle-character" class="toggle-btn">
+      Put Away Buddy
+    </button>
+
+
+  </main> 
+<script src="script.js"></script>
+</body> 
+</html> 

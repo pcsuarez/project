@@ -1,0 +1,367 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/*-------------------------------------------------------------------------------------*/
+
+body {
+  color: #0f4f5a;
+  font-family: 'Press Start 2P', cursive;
+  background: linear-gradient(180deg, #ffffff 0%, #f0f0f0 100%);
+}
+
+a {
+  transition: all 0.3s ease;
+}
+
+/*-------------------------------------------------------------------------------------*/
+
+.button {
+  font-family: 'Press Start 2P', sans-serif;
+  font-size: 10px;
+  padding: 8px 16px;
+  border: 2px solid white;
+  border-radius: 20px;
+  background-color: transparent;
+  color: white;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.button:hover {
+  color: black;
+  background-color: rgba(255, 255, 255, 1);
+  transform: scale(1.05);
+}
+
+.button .caret {
+  font-size: 8px;
+  margin-left: 5px;
+}
+
+/*-------------------------------------------------------------------------------------*/
+
+.top-bar {
+  background: url(asset/Tubig.gif);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  padding: 0 30px;
+  align-items: center;
+  color: white;
+  height: 150px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  overflow: visible;
+  gap: 20px;
+}
+
+.top-left {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  height: 100%;
+  flex: 1;
+}
+
+.top-right {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  gap: 20px;
+  flex: 1;
+}
+
+.top-bar > * {
+  outline: 1px dashed red;
+}
+
+@media (max-width: 768px) {
+  .top-bar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+  }
+
+  .top-left {
+    display: flex;
+    align-items: center;
+  }
+
+  .main-nav-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-left: 10px;
+    order: 1;
+  }
+
+  .top-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    order: 2;
+  }
+}
+
+
+
+/*-------------------------------------------------------------------------------------*/
+
+.main-nav-wrapper {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  height: 100%;
+}
+
+.main-nav {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 20px;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 12px;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  padding: 10px 30px;
+  max-width: 1000px;
+  margin: 0 auto;
+  white-space: nowrap;
+  overflow: hidden;
+  min-height: 50px;
+  min-width: 0;
+  flex: 0 1 auto;
+  justify-content: flex-start;
+}
+
+.main-nav a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 12px;
+  padding: 5px 10px;
+  border-radius: 999px;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+
+}
+
+.main-nav a:hover {
+  background-color: white;
+  color: black;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/*-------------------------------------------------------------------------------------*/
+
+.nav-more {
+  display: inline-flex;
+  align-items: center;
+  position: relative;
+  cursor: pointer;
+  font-size: 12px;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 20px;
+  transition: all 0.2s ease;
+}
+
+.nav-more:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+.nav-more .dropdown {
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 0;
+  background: white;
+  color: black;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  display: none;
+  flex-direction: column;
+  min-width: 160px;
+  z-index: 100;
+}
+
+.nav-more:hover .dropdown {
+  display: flex;
+  animation: fadeIn 0.2s ease-in-out;
+}
+
+.nav-more .dropdown a {
+  padding: 12px 16px;
+  color: #333;
+  font-size: 12px;
+  text-decoration: none;
+  transition: background 0.2s ease;
+}
+
+.nav-more .dropdown a:hover {
+  background-color: #f3f3f3;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+/*-------------------------------------------------------------------------------------*/
+
+.top-right .menu-btn {
+  background: transparent;
+  color: white;
+  border: 2px solid #6ee7f9;
+  border-radius: 15px;
+  padding: 6px 14px;
+  margin-left: 10px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.top-right .menu-btn:hover {
+  background: #6ee7f9;
+  color: black;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+/*-------------------------------------------------------------------------------------*/
+
+.subnav {
+  background: #fff;
+  color: #0f4f5a;
+  display: flex;
+  justify-content: space-between;
+  height: 70px;
+  line-height: 70px;
+  align-items: center;
+  padding: 16px 30px;
+  font-size: 12px;
+  font-family: 'Press Start 2P', monospace;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  z-index: 5;
+  position: relative;
+}
+
+.subnav .left-links {
+  display: flex;
+  gap: 30px;
+}
+
+.subnav a {
+  color: #0f4f5a;
+  text-decoration: none;
+  margin-right: 20px;
+  font-size: 12px;
+  font-family: 'Press Start 2P', monospace;
+}
+
+.subnav a:hover {
+  color: #42c8b3;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: bold;
+}
+
+/*-------------------------------------------------------------------------------------*/
+
+.hero-section {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 30px;
+  padding: 50px 30px;
+  align-items: center;
+}
+
+.hero-textbox {
+  flex: 1 1 300px;
+}
+
+.hero-textbox h1 {
+  font-size: 18px;
+  line-height: 2;
+  margin-bottom: 15px;
+}
+
+.hero-textbox p {
+  font-size: 10px;
+  max-width: 400px;
+  margin-bottom: 25px;
+}
+
+.hero-character {
+  flex: 1 1 300px;
+}
+
+.hero-character img {
+  max-width: 100%;
+  height: auto;
+}
+
+/*-------------------------------------------------------------------------------------*/
+
+.highlight {
+  color: #738cab;
+}
+
+/*-------------------------------------------------------------------------------------*/
+
+.links-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  font-size: 10px;
+}
+
+.links-row a {
+  color: #3b4cca;
+  text-decoration: underline;
+}
+
+.links-row a:hover {
+  color: #000;
+  text-decoration: none;
+}
+
+/*-------------------------------------------------------------------------------------*/
+
+.pokeball-icon {
+  width: 40px;
+  height: 40px;
+  display: block;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.pokeball-icon.spin {
+  animation: spin 0.5s linear;
+}
