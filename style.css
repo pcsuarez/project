@@ -20,15 +20,30 @@ body {
   background: url(asset/Tubig.gif);
   background-repeat: no-repeat;
   background-size: cover;
-  display: flex;
-  flex-wrap: nowrap;
-  overflow: hidden;
-  justify-content: space-between;
-  padding: 0 30px;
-  align-items: center;
-  color: white;
+  position: relative;
   height: 120px;
   width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 30px;
+  color: white;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.top-bar::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: url(asset/Tubig.gif);
+  background-size: cover;
+  background-repeat: no-repeat;
+  filter: blur(3px);
+  z-index: -1; /* Behind the text */
 }
 
 .top-left {
@@ -45,11 +60,51 @@ body {
   align-items: center;
 }
 
+.top-bar a {
+  color: #000;
+  text-decoration: none;
+  padding: 8px 16px;
+  font-weight: bold;
+  margin: 4px;
+  background-color: transparent;
+  transition: all 0.2s ease;
+  display: inline-block;
+
+  border: 2px solid transparent;
+  box-shadow: 0 0 0 transparent;
+}
+
+.top-bar a:hover {
+  background-color: #ffffff;
+  color: #000000; /* your accent text color */
+}
+
+.top-left a {
+  color: #000;
+  text-decoration: none;
+  padding: 8px 16px;
+  font-weight: bold;
+  margin: 4px;
+  border-radius: 6px;
+  background-color: transparent;
+  border: 2px solid transparent; /* Prevents layout jump */
+  transition: all 0.2s ease;
+  display: inline-block;
+}
+
+.top-left a:hover {
+  background-color: #ffffff;
+  color: #000000;
+  box-shadow: 0 0 6px #aaa;
+  border: 2px solid #ccc;
+}
+
+
 /*------------------------------------------*/
 
 .pokeball-icon {
-  width: 40px;
-  height: 40px;
+  width: 70px;
+  height: 70px;
   transition: transform 0.5s ease;
 }
 
@@ -78,7 +133,7 @@ body {
   color: rgb(249, 249, 249);
   text-decoration: none;
   margin-right: 20px;
-  font-size: 12px;
+  font-size: 20px;
   display: inline-block;
 }
 
@@ -103,11 +158,18 @@ body {
   font-family: 'Press Start 2P';
   color: white;
   border: 2px solid #ffffff;
-  padding: 6px 14px;
+  padding: 10px 14px;
   margin-left: 10px;
-  font-size: 12px;
+  font-size: 20px;
   cursor: pointer;
 }
+
+.top-right .menu-btn:hover {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+
 
 /*------------------------------------------*/
 
@@ -133,6 +195,7 @@ body {
   color: #16aaa8;
   border-color: #0f4f5a;
 }
+
 
 /*------------------------------------------*/
 
@@ -177,7 +240,7 @@ body {
   justify-content: flex-start;
   align-items: center;
   gap: 30px;
-  padding: 12px 30px;
+  padding: 15px 30px;
   border-bottom: 2px solid black;
   font-size: 10px;
 }
@@ -217,6 +280,8 @@ body {
 /*------------------------------------------*/
 
 .hero-section {
+  font-style: normal; /* ← this forces non-italic text */
+  font-weight: bold;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -226,8 +291,6 @@ body {
   margin: 0 auto;
   padding: 2rem;
 }
-
-
 
 .hero-textbox h1 {
   font-size: 18px;
@@ -241,20 +304,25 @@ body {
 }
 
 .hero-textbox p {
-  font-size: 10px;
-  max-width: 400px;
+  font-style: normal;
+  font-weight: bold;
+  margin-top: 100px;
+  font-size: 15px;
+  max-width: 600px;
   margin-bottom: 25px;
   text-align: center;
+  height: 200px;
 }
 
 /*------------------------------------------*/
 
 .links-row {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column; /*guys i kinda changed the it kasi the bundle stuff was confusing*/
   gap: 15px;
   font-size: 10px;
 }
+
 
 .links-row a {
   color: #3b4cca;
@@ -292,6 +360,27 @@ body {
   opacity: 0;
 }
 
+.buddy-dialogue {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #fff;
+  color: #0f4f5a;
+  padding: 8px 10px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-family: 'Press Start 2P', cursive;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+  white-space: normal;
+  max-width: 200px;
+  text-align: left;
+  display: none;
+  z-index: 1001;
+}
+
+
+
 /*------------------------------------------*/
 
 .products-section {
@@ -302,12 +391,13 @@ body {
 }
 
 .section-title {
-  font-size: 1rem;
+  font-size: 15px;
   margin-bottom: 0.5rem;
   margin-top: -25px;
   padding: 0;
   text-align: center;
-  width: 100%;               /* full width block */
+  width: 100%;
+  height: 20px;
   display: block;            /* ensures it behaves like a block element */
   transform: translateY(-15px); /* optional lift */
 }
@@ -316,36 +406,54 @@ body {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1.5rem;
-  justify-content: center;     /* centers entire grid */
-  justify-items: center;       /* centers items within cells */
+  justify-content: center;
+  justify-items: center;
   margin: 0 auto;
   text-align: center;
-  max-width: 1200px;            /* 👈 keeps short rows like 2-item ones centered */
+  max-width: 1200px; 
 }
 
-.product-card {
-  align-items: center;
-  justify-content: center;
+.product-card { /*i changed some stuff here*/
+  border: 2px solid #000;
+  width: 200px;
+  height: 300px;
+  padding: 10px;
   text-align: center;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
+  background: #fefefe;
 }
 
 .product-card:hover {
   transform: scale(1.03);
 }
 
-.product-card img {
-  width: 100px;     /* resize the image here */
-  height: 100px;
+.product-card img { /*i changed some stuff here*/
+  max-width: 140px;
+  max-height: 140px;
+  width: 128px;
+  height: auto;
   object-fit: contain;
-  margin-bottom: 0.5rem;
+  display: block;
+  margin: 0 auto;
+}
+
+.products-section h2 {
+  margin-top: 20px;
+  margin-bottom: 50px;
+  font-size: 15px;
 }
 
 .product-card h3 {
+  margin-top: 20px;
   font-size: 0.8rem;   /* smaller text title */
   margin-bottom: 0.25rem;
 }
 
 .product-card p {
+  margin-top: 20px;
   font-size: 0.7rem;   /* smaller text body */
   margin-bottom: 0.25rem;
 }
@@ -357,7 +465,7 @@ body {
 }
 
 .add-to-cart {
-  margin-top: 10px;
+  margin-top: auto;
   padding: 10px;
   background: #ffcb05;
   border: none;
@@ -368,7 +476,6 @@ body {
 .pokecoins-grid {
   max-width: 1200px;
 }
-
 
 .invisible {
   visibility: hidden;
@@ -435,4 +542,16 @@ body {
 
 /*------------------------------------------*/
 
+.site-footer {
+  background-color: #f2f2f2;
+  color: #333;
+  font-size: 8px;
+  line-height: 1.4;
+  padding: 20px;
+  text-align: center;
+  border-top: 1px solid #ccc;
+}
 
+.site-footer p {
+  margin: 5px 0;
+}
