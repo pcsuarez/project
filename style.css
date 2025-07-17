@@ -270,15 +270,32 @@ body {
 
 /*------------------------------------------*/
 
-.hero-character {
+.buddy-character {
   position: fixed;
-  top: 120px;   /* adjust for your header */
-  right: 0;
+  bottom: 0px;  /* same as your button's bottom to align! */
+  right: 0px;   /* same as your button's right to align! */
+  width: 400px;  /* adjust for your final image */
+  height: 400px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 6px;
+  color: #0f4f5a;
   transition: transform 0.5s ease, opacity 0.5s ease;
+  z-index: 1000;  /* lower than the toggle-btn (1001) */
 }
 
-.hero-character.hidden {
-  transform: translateX(100%);
+.buddy-character img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;  /* keeps the aspect ratio! */
+  transition: opacity 0.3s ease;
+  cursor: pointer;
+}
+
+.buddy-character.hidden {
+  transform: translateY(150%);  /* slides down out of view */
   opacity: 0;
 }
 
@@ -330,7 +347,7 @@ body {
   display: none;
   font-family: 'Press Start 2P', cursive;
   font-size: 8px;
-  z-index: 1000;
+  z-index: 2000;
 }
 
 .cart-popup ul {
