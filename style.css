@@ -4,15 +4,17 @@
   box-sizing: border-box;
 }
 
-
 body {
   font-family: 'Press Start 2P', cursive;
   background: white;
   color: #0f4f5a;
-  justify-content: center;
-  align-items: center;
   height: 100vh;
+  margin: 0;
+  padding: 0;
+  text-align: center;
 }
+
+/*------------------------------------------*/
 
 .top-bar {
   background: url(asset/Tubig.gif);
@@ -29,7 +31,6 @@ body {
   width: 100%;
 }
 
-
 .top-left {
   display: flex;
   flex-wrap: nowrap;
@@ -44,9 +45,12 @@ body {
   align-items: center;
 }
 
+/*------------------------------------------*/
+
 .pokeball-icon {
   width: 40px;
   height: 40px;
+  transition: transform 0.5s ease;
 }
 
 .pokeball-icon:hover {
@@ -58,16 +62,11 @@ body {
   to { transform: rotate(360deg); }
 }
 
-.pokeball-icon {
-  width: 40px;
-  height: 40px;
-  transition: transform 0.5s ease;
-}
-
 .pokeball-icon.spin {
   animation: spin 1s linear infinite;
 }
 
+/*------------------------------------------*/
 
 .main-nav {
   display: flex;
@@ -91,7 +90,6 @@ body {
   background: transparent;
   color: white;
   border: 2px solid #6ee7f9;
-  border-radius: 15px;
   padding: 6px 14px;
   margin-left: 10px;
   font-size: 12px;
@@ -99,6 +97,19 @@ body {
   text-decoration: none;
   line-height: 1;
 }
+
+.top-right .menu-btn {
+  background: transparent;
+  font-family: 'Press Start 2P';
+  color: white;
+  border: 2px solid #ffffff;
+  padding: 6px 14px;
+  margin-left: 10px;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+/*------------------------------------------*/
 
 .toggle-btn {
   position: fixed;
@@ -108,7 +119,6 @@ body {
   background: #0f4f5a;
   color: #ffffff;
   border: 2px solid #6ef9eb;
-  border-radius: 15px;
   font-family: 'Press Start 2P', cursive;
   font-size: 8px;
   cursor: pointer;
@@ -124,54 +134,37 @@ body {
   border-color: #0f4f5a;
 }
 
+/*------------------------------------------*/
+
 @media (max-width: 700px) {
   .main-nav a:nth-last-child(1) {
     display: none;
   }
 }
-
 @media (max-width: 600px) {
   .main-nav a:nth-last-child(2) {
     display: none;
   }
 }
-
 @media (max-width: 500px) {
   .main-nav a:nth-last-child(3) {
     display: none;
   }
 }
-
 @media (max-width: 400px) {
   .main-nav a:nth-last-child(4) {
     display: none;
   }
 }
-
 @media (max-width: 300px) {
   .main-nav a:nth-last-child(5) {
     display: none;
   }
 }
-
 @media (max-width: 200px) {
   .main-nav a:nth-last-child(6) {
     display: none;
   }
-}
-
-/*------------------------------------------*/
-
-.top-right .menu-btn {
-  background: transparent;
-  font-family: 'Press Start 2P';
-  color: white;
-  border: 2px solid #ffffff;
-  border-radius: 15px;
-  padding: 6px 14px;
-  margin-left: 10px;
-  font-size: 12px;
-  cursor: pointer;
 }
 
 /*------------------------------------------*/
@@ -206,13 +199,11 @@ body {
     display: none;
   }
 }
-
 @media (max-width: 600px) {
   .subnav a:nth-last-child(2) {
     display: none;
   }
 }
-
 
 /*------------------------------------------*/
 
@@ -227,10 +218,16 @@ body {
 
 .hero-section {
   display: flex;
-  justify-content: space-between;
-  padding: 50px;
+  flex-direction: column;
   align-items: center;
+  justify-content: center;
+  text-align: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
 }
+
+
 
 .hero-textbox h1 {
   font-size: 18px;
@@ -239,13 +236,9 @@ body {
   text-align: center;
 }
 
-/*------------------------------------------*/
-
 .highlight {
   color: #eb9d0a;
 }
-
-/*------------------------------------------*/
 
 .hero-textbox p {
   font-size: 10px;
@@ -253,6 +246,7 @@ body {
   margin-bottom: 25px;
   text-align: center;
 }
+
 /*------------------------------------------*/
 
 .links-row {
@@ -261,7 +255,6 @@ body {
   gap: 15px;
   font-size: 10px;
 }
-
 
 .links-row a {
   color: #3b4cca;
@@ -272,9 +265,9 @@ body {
 
 .buddy-character {
   position: fixed;
-  bottom: 0px;  /* same as your button's bottom to align! */
-  right: 0px;   /* same as your button's right to align! */
-  width: 400px;  /* adjust for your final image */
+  bottom: 0px;
+  right: 0px;
+  width: 400px;
   height: 400px;
   display: flex;
   align-items: flex-end;
@@ -283,46 +276,84 @@ body {
   font-size: 6px;
   color: #0f4f5a;
   transition: transform 0.5s ease, opacity 0.5s ease;
-  z-index: 1000;  /* lower than the toggle-btn (1001) */
+  z-index: 1000;
 }
 
 .buddy-character img {
   max-width: 100%;
   max-height: 100%;
-  object-fit: contain;  /* keeps the aspect ratio! */
+  object-fit: contain;
   transition: opacity 0.3s ease;
   cursor: pointer;
 }
 
 .buddy-character.hidden {
-  transform: translateY(150%);  /* slides down out of view */
+  transform: translateY(150%);
   opacity: 0;
 }
 
-
 /*------------------------------------------*/
 
-.category {
-  margin: 40px 0;
+.products-section {
+  margin-top: -30px;   /* pull the whole section up */
+  margin-bottom: 3rem; /* keep spacing below */
+  padding-top: 0;
+  margin-top: -10px;  
 }
 
-.products-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
+.section-title {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+  margin-top: -25px;
+  padding: 0;
+  text-align: center;
+  width: 100%;               /* full width block */
+  display: block;            /* ensures it behaves like a block element */
+  transform: translateY(-15px); /* optional lift */
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  justify-content: center;     /* centers entire grid */
+  justify-items: center;       /* centers items within cells */
+  margin: 0 auto;
+  text-align: center;
+  max-width: 1200px;            /* 👈 keeps short rows like 2-item ones centered */
 }
 
 .product-card {
-  border: 2px solid #000;
-  padding: 20px;
-  width: 200px;
+  align-items: center;
+  justify-content: center;
   text-align: center;
-  background: #fefefe;
+}
+
+.product-card:hover {
+  transform: scale(1.03);
 }
 
 .product-card img {
-  width: 100%;
-  height: auto;
+  width: 100px;     /* resize the image here */
+  height: 100px;
+  object-fit: contain;
+  margin-bottom: 0.5rem;
+}
+
+.product-card h3 {
+  font-size: 0.8rem;   /* smaller text title */
+  margin-bottom: 0.25rem;
+}
+
+.product-card p {
+  font-size: 0.7rem;   /* smaller text body */
+  margin-bottom: 0.25rem;
+}
+
+.product-card span {
+  font-size: 0.75rem;  /* price or details */
+  font-weight: bold;
+  color: #222;
 }
 
 .add-to-cart {
@@ -333,6 +364,18 @@ body {
   cursor: pointer;
   font-family: 'Press Start 2P', cursive;
 }
+
+.pokecoins-grid {
+  max-width: 1200px;
+}
+
+
+.invisible {
+  visibility: hidden;
+}
+
+
+/*------------------------------------------*/
 
 .cart-popup {
   position: absolute;
@@ -359,3 +402,37 @@ body {
 .cart-popup li {
   margin-bottom: 5px;
 }
+
+
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60vh;
+  font-size: 10px;
+}
+
+.login-form {
+  border: 2px solid #0f4f5a;
+  padding: 30px;
+  text-align: center;
+  background: white;
+  border-radius: 15px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.login-form input {
+  padding: 5px;
+  width: 200px;
+}
+
+.login-form h2 {
+  margin-bottom: 20px;
+}
+
+/*------------------------------------------*/
+
+

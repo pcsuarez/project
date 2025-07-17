@@ -1,236 +1,317 @@
-<!DOCTYPE html> 
-<html lang="en"> 
-<head> 
-  <meta charset="UTF-8" /> 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/> 
-  <title>Pokémon Go Web Store</title> 
-  <link rel="stylesheet" href="style.css" /> 
-  <link 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pokémon Go Web Store</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link
 href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap
-" rel="stylesheet"> 
-</head> 
+" rel="stylesheet">
+</head>
  
-<body> 
+<body>
  
-  <header class="top-bar"> 
-    <div class="top-left"> 
-      <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Poké_Ball_icon.svg"
-      alt="Pokeball Logo" 
-      class="pokeball-icon"> 
+  <header class="top-bar">
+    <div class="top-left">
+      <img src="images/PokemonGo Logo.png"
+      alt="Pokeball Logo"
+      class="pokeball-icon">
  
-      <nav class="main-nav"> 
-        <a href="#">News</a> 
-        <a href="#">Seasons</a> 
-        <a href="#">Events</a> 
-        <a href="#">Community</a> 
-        <a href="#">Leaderboard</a> 
-      </nav> 
+      <nav class="main-nav">
+        <a href="#">News</a>
+        <a href="#">Seasons</a>
+        <a href="#">Events</a>
+        <a href="#">Community</a>
+        <a href="#">Leaderboard</a>
+      </nav>
  
-    </div> 
- 
-    <div class="top-right"> 
-      <button class="menu-btn">SHOP</button> 
-      <a href="login page/login.html" class="menu-btn">NAME</a> 
-    </div> 
-  </header> 
- 
-  <div class="subnav"> 
-    <a href="index.html">Web Store</a> 
-    <a href="Events/event.html">Event Ticketing</a> 
-    <a href="#">Code Redemption</a> 
-    <div class="user-info">
-      0 PokéCoins | Poké Basket (0)
-    </div>
-    <div class="cart-popup">
-      <div class="cart-popup">
-        <h3>Your Poké Basket</h3>
-      </div>
-      <ul id="cart-items"></ul>
-      <p id="cart-total">Total: 0 PokéCoins</p>
     </div>
 
-  </div> 
+
+     <div class="top-right">
+      <button class="menu-btn">SHOP</button>
+      <a href="login page/login.html" class="menu-btn">NAME</a>
+    </div>
+</div>
+
+
+  </header>
+ 
+  <div class="subnav">
+    <a href="index.html">Web Store</a>
+    <a href="Events/event.html">Event Ticketing</a>
+    <a href="#">Code Redemption</a>
+    <div class="user-info">
+  <span id="cart-count">0 PokéCoins | </span>
+    <a href="cart page/cart.html">Poké Basket (<span id="item-count">0</span>)</a>
+  </div>
+  </div>
  
   <main class="hero-section"> 
  
     <div class="hero-textbox"> 
  
       <h1>The <span class="highlight">official</span> Web Store for <br>POKÉMON GO</h1>
-      <p><em>Discover exclusive offers and earn points with every purchase to unlock special rewards. Learn more.</em></p> 
+      <p><em>Discover exclusive offers and earn points with every purchase to unlock special rewards. Learn more.</em></p>
  
-      <div class="links-row"> 
-        <section id="limited-time" class="category">
+      <div class="links-row">
+        <section id="limited-time" class="products-section">
           <h2>Limited Time Offers</h2>
-          <div class="products-container">
-            <div class="product-card">
-              <img src="assets/limited1.png" alt="Product 1">
-              <h3>Special Box A</h3>
-              <p>Price: 500 PokéCoins</p>
-              <button class="add-to-cart">Add to Cart</button>
-            </div>
-            <div class="product-card">
-              <img src="assets/limited2.png" alt="Product 2">
-              <h3>Special Box B</h3>
-              <p>Price: 800 PokéCoins</p>
-              <button class="add-to-cart">Add to Cart</button>
-            </div>
-            <div class="product-card">
-              <img src="assets/limited3.png" alt="Product 3">
-              <h3>Special Box C</h3>
-              <p>Price: 1200 PokéCoins</p>
-              <button class="add-to-cart">Add to Cart</button>
-            </div>
-          </div>
-        </section>
+          <div class="product-grid">
 
-        <section id="Ticket Bundles" class="category">
+            <div class="product-card">
+              <img src="https://store.pokemongo.com/_next/image?url=https%3A%2F%2Fstorage.googleapis.com%2Fplatform-webstore-rel-assets%2Fpgo%2Fsku_assets%2Fred_bundle_box.webp&w=384&q=75" alt="Product 1">
+              <h3>Go Pass Deluxe: A</h3>
+              <p>Price: ₱235</p>
+              <button class="add-to-cart">Add to Cart</button>
+            </div>
+
+            <div class="product-card">
+              <img src="https://store.pokemongo.com/_next/image?url=https%3A%2F%2Fstorage.googleapis.com%2Fplatform-webstore-rel-assets%2Fpgo%2Fsku_assets%2Fbundle.general2.medium.2.png&w=384&q=75" alt="Product 2">
+              <h3>Go Pass Deluxe: B + 10 Rank</h3>
+              <p>Price: ₱289</p>
+              <button class="add-to-cart">Add to Cart</button>
+            </div>
+
+            <div class="product-card">
+              <img src="https://store.pokemongo.com/_next/image?url=https%3A%2F%2Fstorage.googleapis.com%2Fplatform-webstore-rel-assets%2Fpgo%2Fsku_assets%2Fbundle.general2.large.2.png&w=384&q=75" alt="Product 3">
+              <h3>Go Pass Deluxe: C + 10 Rank Ultra Ticket Box</h3>
+              <p>Price: ₱439</p>
+              <button class="add-to-cart">Add to Cart</button>
+            </div>
+
+
+          </div>
+           </section>
+
+
+        <section id="Ticket Bundles" class="products-section">
           <h2>Ticket Bundles</h2>
-          <div class="products-container">
+          <div class="product-grid">
+
+
             <div class="product-card">
-              <img src="assets/tb1.png" alt="Product 1">
-              <h3>Special Box A</h3>
-              <p>Price: 500 PokéCoins</p>
+              <img src="https://store.pokemongo.com/_next/image?url=https%3A%2F%2Fstorage.googleapis.com%2Fplatform-webstore-rel-assets%2Fpgo%2Fsku_assets%2Fbundle2.sprite.a.png&w=384&q=75" alt="Product 1">
+              <h3>Quaxly Community Day Ultra Ticket Box</h3>
+              <p>Price: ₱59</p>
               <button class="add-to-cart">Add to Cart</button>
             </div>
+
+
+
+
             <div class="product-card">
-              <img src="assets/tb2.png" alt="Product 2">
-              <h3>Special Box B</h3>
-              <p>Price: 800 PokéCoins</p>
+              <img src="https://store.pokemongo.com/_next/image?url=https%3A%2F%2Fstorage.googleapis.com%2Fplatform-webstore-rel-assets%2Fpgo%2Fsku_assets%2Fbundle.general2.small.1.png&w=384&q=75" alt="Product 2">
+              <h3>Water Festival Ultra Ticket Box</h3>
+              <p>Price: ₱149</p>
+              <button class="add-to-cart">Add to Cart</button>
+            </div>
+
+
+
+
+            <div class="product-card">
+              <img src="https://store.pokemongo.com/_next/image?url=https%3A%2F%2Fstorage.googleapis.com%2Fplatform-webstore-rel-assets%2Fpgo%2Fsku_assets%2Fbundle3.sprite.b.png&w=384&q=75" alt="Product 3">
+              <h3>G-MAX Lapras Max Battle Day Ultra Ticket Box</h3>
+              <p>Price: ₱149</p> <!-- just insert how much-->
+              <button class="add-to-cart">Add to Cart</button>
+            </div>
+
+
+          </div>
+        </section> <!--i removed the item bundles, if that's alr-->
+
+
+        <section id="Items" class="products-section"> <!--changed it to items - plural-->
+          <h2>Items</h2>
+          <div class="product-grid">
+
+
+            <div class="product-card">
+              <img src="https://store.pokemongo.com/_next/image?url=https%3A%2F%2Fstorage.googleapis.com%2Fplatform-webstore-rel-assets%2Fpgo%2Fsku_assets%2F1_mp_rrp.png&w=384&q=75" alt="Product 1">
+              <h3>Max Particle Pack + Remote Raid Pass</h3>
+              <p>Price: ₱88</p>
+              <button class="add-to-cart">Add to Cart</button>
+            </div>
+
+            <div class="product-card">
+              <img src="https://store.pokemongo.com/_next/image?url=https%3A%2F%2Fstorage.googleapis.com%2Fplatform-webstore-rel-assets%2Fpgo%2Fsku_assets%2F3_mp_rrp.png&w=384&q=75" alt="Product 2">
+              <h3>3 Max Particle Pack + 3 Remote Raid Pass</h3>
+              <p>Price: ₱235</p>
+              <button class="add-to-cart">Add to Cart</button>
+            </div>
+
+            <div class="product-card">
+              <img src="https://store.pokemongo.com/_next/image?url=https%3A%2F%2Fstorage.googleapis.com%2Fplatform-webstore-rel-assets%2Fpgo%2Fsku_assets%2Fluckyegg.5.png&w=384&q=75" alt="Product 3">
+              <h3>Lucky Egg</h3>
+              <p>Price: ₱149 </p>
+              <button class="add-to-cart">Add to Cart</button>
+            </div>
+
+            <div class="product-card">
+              <img src="https://store.pokemongo.com/_next/image?url=https%3A%2F%2Fstorage.googleapis.com%2Fplatform-webstore-rel-assets%2Fpgo%2Fsku_assets%2F08_%20x3.png&w=384&q=75" alt="Product 4">
+              <h3>Star Piece</h3>
+              <p>Price: ₱175 </p>
+              <button class="add-to-cart">Add to Cart</button>
+            </div>
+
+            <div class="product-card">
+              <img src="https://store.pokemongo.com/_next/image?url=https%3A%2F%2Fstorage.googleapis.com%2Fplatform-webstore-rel-assets%2Fpgo%2Fsku_assets%2Fraid_pass_blue%20(1).png&w=384&q=75" alt="Product 5">
+              <h3>Remote Raid Pass</h3>
+              <p>Price: ₱88 </p>
+              <button class="add-to-cart">Add to Cart</button>
+            </div>
+
+            <div class="product-card">
+              <img src="https://store.pokemongo.com/_next/image?url=https%3A%2F%2Fstorage.googleapis.com%2Fplatform-webstore-rel-assets%2Fpgo%2Fsku_assets%2Fitem_pokemon_storage_upgrade.png&w=384&q=75" alt="Product 6">
+              <h3>Pokémon Storage</h3>
+              <p>Price: ₱59 </p>
+              <button class="add-to-cart">Add to Cart</button>
+            </div>
+
+            <div class="product-card">
+              <img src="https://store.pokemongo.com/_next/image?url=https%3A%2F%2Fstorage.googleapis.com%2Fplatform-webstore-rel-assets%2Fpgo%2Fsku_assets%2Fitem_item_storage_upgrade.png&w=384&q=75" alt="Product 7">
+              <h3>Item Bag</h3>
+              <p>Price: ₱59</p>
+              <button class="add-to-cart">Add to Cart</button>
+            </div>
+
+            <div class="product-card">
+              <img src="https://store.pokemongo.com/_next/image?url=https%3A%2F%2Fstorage.googleapis.com%2Fplatform-webstore-rel-assets%2Fpgo%2Fsku_assets%2Fitem_incubator_basic.png&w=384&q=75" alt="Product 8">
+              <h3>Egg Incubator</h3>
+              <p>Price: ₱88 </p>
+              <button class="add-to-cart">Add to Cart</button>
+            </div>
+
+            <div class="product-card">
+              <img src="https://store.pokemongo.com/_next/image?url=https%3A%2F%2Fstorage.googleapis.com%2Fplatform-webstore-rel-assets%2Fpgo%2Fsku_assets%2FIncubator_Super.png&w=384&q=75" alt="Product 9">
+              <h3>Super Incubator</h3>
+              <p>Price: ₱88</p>
+              <button class="add-to-cart">Add to Cart</button>
+            </div>
+
+            <div class="product-card">
+              <img src="https://store.pokemongo.com/_next/image?url=https%3A%2F%2Fstorage.googleapis.com%2Fplatform-webstore-rel-assets%2Fpgo%2Fsku_assets%2Fitem_max_revive.png&w=384&q=75" alt="Product 10">
+              <h3>Max Revive</h3>
+              <p>Price: ₱59</p>
+              <button class="add-to-cart">Add to Cart</button>
+            </div>
+
+            <div class="product-card">
+              <img src="https://store.pokemongo.com/_next/image?url=https%3A%2F%2Fstorage.googleapis.com%2Fplatform-webstore-rel-assets%2Fpgo%2Fsku_assets%2Fitem_paid_raid_ticket.png&w=384&q=75" alt="Product 11">
+              <h3>Premium Battle Pass</h3>
+              <p>Price: ₱88</p>
+              <button class="add-to-cart">Add to Cart</button>
+            </div>
+
+            <div class="product-card">
+              <img src="https://store.pokemongo.com/_next/image?url=https%3A%2F%2Fstorage.googleapis.com%2Fplatform-webstore-rel-assets%2Fpgo%2Fsku_assets%2Fitem_mp_replenish.png&w=384&q=75" alt="Product 12">
+              <h3>Max Particle Pack</h3>
+              <p>Price: ₱235</p>
+              <button class="add-to-cart">Add to Cart</button>
+            </div>
+
+            <div class="product-card">
+              <img src="https://store.pokemongo.com/_next/image?url=https%3A%2F%2Fstorage.googleapis.com%2Fplatform-webstore-rel-assets%2Fpgo%2Fsku_assets%2Fitem_max_boost.png&w=384&q=75" alt="Product 13">
+              <h3>Max Mushroom</h3>
+              <p>Price: ₱289</p>
               <button class="add-to-cart">Add to Cart</button>
             </div>
           </div>
         </section>
 
-        <section id="Item Bundles" class="category">
-          <h2>Item Bundles</h2>
-          <div class="products-container">
-            <div class="product-card">
-              <img src="assets/ib1.png" alt="Product 1">
-              <h3>Special Box A</h3>
-              <p>Price: 500 PokéCoins</p>
-              <button class="add-to-cart">Add to Cart</button>
-            </div>
-          </div>
-        </section>
-
-        <section id="Item" class="category">
-          <h2>Item</h2>
-          <div class="products-container">
-            <div class="product-card">
-              <img src="assets/items1.png" alt="Product 1">
-              <h3>Special Box A</h3>
-              <p>Price: 500 PokéCoins</p>
-              <button class="add-to-cart">Add to Cart</button>
-            </div>
-            <div class="product-card">
-              <img src="assets/items1.png" alt="Product 1">
-              <h3>Special Box A</h3>
-              <p>Price: 500 PokéCoins</p>
-              <button class="add-to-cart">Add to Cart</button>
-            </div>
-            <div class="product-card">
-              <img src="assets/items1.png" alt="Product 1">
-              <h3>Special Box A</h3>
-              <p>Price: 500 PokéCoins</p>
-              <button class="add-to-cart">Add to Cart</button>
-            </div>
-            <div class="product-card">
-              <img src="assets/items1.png" alt="Product 1">
-              <h3>Special Box A</h3>
-              <p>Price: 500 PokéCoins</p>
-              <button class="add-to-cart">Add to Cart</button>
-            </div>
-            <div class="product-card">
-              <img src="assets/items1.png" alt="Product 1">
-              <h3>Special Box A</h3>
-              <p>Price: 500 PokéCoins</p>
-              <button class="add-to-cart">Add to Cart</button>
-            </div>
-            <div class="product-card">
-              <img src="assets/items1.png" alt="Product 1">
-              <h3>Special Box A</h3>
-              <p>Price: 500 PokéCoins</p>
-              <button class="add-to-cart">Add to Cart</button>
-            </div>
-          </div>
-        </section>
-
-        <section id="PokeCoins" class="category">
+        <section id="PokeCoins" class="products-section">
           <h2>PokeCoins</h2>
-          <div class="products-container">
+          <div class="product-grid pokecoins-grid">
+
             <div class="product-card">
-              <img src="assets/c1.png" alt="Product 1">
-              <h3>Special Box A</h3>
-              <p>Price: 500 PokéCoins</p>
+              <img src="https://store.pokemongo.com/_next/image?url=https%3A%2F%2Fstorage.googleapis.com%2Fplatform-webstore-rel-assets%2Fpgo%2Fsku_assets%2Fcoin-bundle-xxsmall.png&w=384&q=75" alt="Product 1">
+              <h3>110 PokeCoins</h3>
+              <p>Price: ₱29</p>
               <button class="add-to-cart">Add to Cart</button>
             </div>
+
             <div class="product-card">
-              <img src="assets/c2.png" alt="Product 1">
-              <h3>Special Box A</h3>
-              <p>Price: 500 PokéCoins</p>
+              <img src="https://store.pokemongo.com/_next/image?url=https%3A%2F%2Fstorage.googleapis.com%2Fplatform-webstore-rel-assets%2Fpgo%2Fsku_assets%2Fcoin-bundle-xsmall.png&w=384&q=75" alt="Product 1">
+              <h3>600 PokeCoins</h3>
+              <p>Price: ₱149</p>
               <button class="add-to-cart">Add to Cart</button>
             </div>
+
             <div class="product-card">
-              <img src="assets/c3.png" alt="Product 1">
-              <h3>Special Box A</h3>
-              <p>Price: 500 PokéCoins</p>
+              <img src="https://store.pokemongo.com/_next/image?url=https%3A%2F%2Fstorage.googleapis.com%2Fplatform-webstore-rel-assets%2Fpgo%2Fsku_assets%2Fcoin-bundle-small_v2.png&w=384&q=75" alt="Product 1">
+              <h3>1,300 PokeCoins</h3>
+              <p>Price: ₱289</p>
               <button class="add-to-cart">Add to Cart</button>
             </div>
+
             <div class="product-card">
-              <img src="assets/c4.png" alt="Product 1">
-              <h3>Special Box A</h3>
-              <p>Price: 500 PokéCoins</p>
+              <img src="https://store.pokemongo.com/_next/image?url=https%3A%2F%2Fstorage.googleapis.com%2Fplatform-webstore-rel-assets%2Fpgo%2Fsku_assets%2Fcoin-bundle-medium_v2.png&w=384&q=75" alt="Product 1">
+              <h3>2,700 PokeCoins</h3>
+              <p>Price: ₱589</p>
               <button class="add-to-cart">Add to Cart</button>
             </div>
+
             <div class="product-card">
-              <img src="assets/c5.png" alt="Product 1">
-              <h3>Special Box A</h3>
-              <p>Price: 500 PokéCoins</p>
+              <img src="https://store.pokemongo.com/_next/image?url=https%3A%2F%2Fstorage.googleapis.com%2Fplatform-webstore-rel-assets%2Fpgo%2Fsku_assets%2Fcoin-bundle-large-v2.png&w=384&q=75" alt="Product 1">
+              <h3>5.600 PokeCoins</h3>
+              <p>Price: ₱1,170</p>
               <button class="add-to-cart">Add to Cart</button>
             </div>
+
             <div class="product-card">
-              <img src="assets/c6.png" alt="Product 1">
-              <h3>Special Box A</h3>
-              <p>Price: 500 PokéCoins</p>
+              <img src="https://store.pokemongo.com/_next/image?url=https%3A%2F%2Fstorage.googleapis.com%2Fplatform-webstore-rel-assets%2Fpgo%2Fsku_assets%2Fcoin-bundle-xlarge.png&w=384&q=75" alt="Product 1">
+              <h3>15,500 PokeCoins</h3>
+              <p>Price: ₱2,950 </p>
               <button class="add-to-cart">Add to Cart</button>
             </div>
+
+
           </div>
         </section>
+        
+        <section id="Daily Bundles" class="products-section">
+          <h2>Daily Bundles</h2>
+          <div class="product-grid">
 
-        <section id="Daily Bundles" class="category">
-          <h2>Limited Time Offers</h2>
-          <div class="products-container">
+
             <div class="product-card">
-              <img src="assets/db1.png" alt="Product 1">
+              <img src="https://store.pokemongo.com/_next/image?url=https%3A%2F%2Fstorage.googleapis.com%2Fplatform-webstore-rel-assets%2Fpgo%2Fsku_assets%2Fml_default_sku_id.png&w=384&q=75" alt="Product 1">
               <h3>Special Box A</h3>
               <p>Price: 500 PokéCoins</p>
               <button class="add-to-cart">Add to Cart</button>
             </div>
+
+
             <div class="product-card">
-              <img src="assets/db2.png" alt="Product 2">
+              <img src="https://store.pokemongo.com/_next/image?url=https%3A%2F%2Fstorage.googleapis.com%2Fplatform-webstore-rel-assets%2Fpgo%2Fsku_assets%2Fml_default_sku_id.png&w=384&q=75" alt="Product 2">
               <h3>Special Box B</h3>
               <p>Price: 800 PokéCoins</p>
               <button class="add-to-cart">Add to Cart</button>
             </div>
+
+
             <div class="product-card">
-              <img src="assets/db3.png" alt="Product 3">
+              <img src="https://store.pokemongo.com/_next/image?url=https%3A%2F%2Fstorage.googleapis.com%2Fplatform-webstore-rel-assets%2Fpgo%2Fsku_assets%2Fml_default_sku_id.png&w=384&q=75" alt="Product 3">
               <h3>Special Box C</h3>
               <p>Price: 1200 PokéCoins</p>
               <button class="add-to-cart">Add to Cart</button>
             </div>
+
+
           </div>
         </section>
 
       </div> 
     </div> 
     <div class="buddy-character">
-      <img id="buddy-sprite" src="asset/Skye_Idle.gif" alt="Buddy">
-    </div>
+    <img id="buddy-sprite" src="asset/Skye_Idle.gif" alt="Buddy">
+  </div>
 
     <button id="toggle-character" class="toggle-btn">Put Away Buddy</button>
 
-
   </main> 
-<script src="script.js"></script>
+<script src="script.js" defer></script>
 </body> 
 </html> 
