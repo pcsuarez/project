@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Pokémon Go Web Store</title>
-  <link rel="stylesheet" href="../style.css"/>
+  <link rel="stylesheet" href="/style.css"/>
   <link
 href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap
 " rel="stylesheet">
@@ -14,34 +14,26 @@ href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap
  
   <header class="top-bar">
     <div class="top-left">
-      <img src="images/PokemonGo Logo.png"
+      <img src="asset/PokemonGo Logo.png"
       alt="Pokeball Logo"
       class="pokeball-icon">
  
       <nav class="main-nav">
-        <a href="#">News</a>
-        <a href="#">Seasons</a>
-        <a href="#">Events</a>
-        <a href="#">Community</a>
-        <a href="#">Leaderboard</a>
+        <a href="/index.html">Home</a>
+        <a href="#">Web Store</a>
+        <a href="/pages/aboutus.html">About Us</a>
+        <a href="#">Sign UP | IN</a>
       </nav>
- 
     </div>
 
 
-     <div class="top-right">
+    <div class="top-right">
       <button class="menu-btn">SHOP</button>
       <a href="login page/login.html" class="menu-btn">NAME</a>
     </div>
-</div>
-
-
   </header>
  
   <div class="subnav">
-    <a href="index.html">Web Store</a>
-    <a href="Events/event.html">Event Ticketing</a>
-    <a href="#">Code Redemption</a>
     <div class="user-info">
   <span id="cart-count">0 PokéCoins | </span><a href="pages/cart.html"> Basket (<span id="item-count">0</span>)</a>
   </div>
@@ -51,9 +43,8 @@ href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap
  
     <div class="hero-textbox"> 
  
-      <h1>The <span class="highlight">official</span> Web Store for <br>POKÉMON GO</h1>
-      <p><em>Discover exclusive offers and earn points with every purchase to unlock special rewards. Learn more.</em></p>
- 
+      <h1>The <span class="highlight">Web Store</span> for <br>POKÉMON GO</h1>
+
       <div class="links-row">
         <section id="limited-time" class="products-section">
           <h2>Limited Time Offers</h2>
@@ -299,10 +290,22 @@ href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap
       </div> 
     </div> 
     <div class="buddy-character">
-    <img id="buddy-sprite" src="asset/Skye_Idle.gif" alt="Buddy">
+    <img id="buddy-sprite" src="../asset/Skye_Idle.gif" alt="Buddy">
+    <div id="buddy-dialogue" class="buddy-dialogue">Hi there, Trainer!</div>
   </div>
+
   <button id="toggle-character" class="toggle-btn">Put Away Buddy</button>
   </main> 
-<script src="script.js"></script>
+
+<footer class="site-footer">
+  <p>This is a Student Project and only used for Educational Projects, all materials used are hand made
+  <p>referenced and displayed in our <a href="#">reference page</a>.
+  </p>
+  <p>©2023 Niantic, Inc. ©2023 Pokémon. ©1995–2023 Nintendo / Creatures Inc. / GAME FREAK inc. Pokémon
+  <p>and Pokémon character names are trademarks of Nintendo.</p>
+</footer>
+
+<script src="../script.js" defer></script>
+
 </body> 
 </html> 

@@ -12,6 +12,7 @@ body {
   margin: 0;
   padding: 0;
   text-align: center;
+  padding: 2rem 1rem;
 }
 
 /*------------------------------------------*/
@@ -116,6 +117,101 @@ body {
 
 .pokeball-icon.spin {
   animation: spin 1s linear infinite;
+}
+
+/*------------------Homepage------------------------*/
+
+.homepage-container {
+  max-width: 900px;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 4rem 3rem;
+  border-radius: 2rem;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  animation: fadeIn 1s ease;
+  margin: 0 auto;
+
+}
+
+.brand-name {
+  color: #00bcd4;
+  font-weight: 700;
+}
+
+.tagline {
+  font-size: 1.2rem;
+  margin: 1rem 0 2rem;
+  color: #007b8f;
+  line-height: 1.8;
+}
+
+.description {
+  font-size: 1rem;
+  margin: 1rem 0 2rem;
+  line-height: 1.8;
+  color: #333;
+}
+
+.cta-buttons {
+  margin-top: 2.5rem;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.cta {
+  padding: 1rem 2rem;
+  border-radius: 999px;
+  background-color: #00bcd4;
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 0.9rem;
+  transition: background 0.3s ease;
+}
+
+.cta:hover {
+  background-color: #019db4;
+}
+
+.cta.secondary {
+  background-color: #f0f0f0;
+  color: #007b8f;
+}
+
+.cta.secondary:hover {
+  background-color: #d6f3f7;
+}
+
+@media (max-width: 768px) {
+  .hero-section {
+    padding: 2rem 1rem;
+  }
+
+  .homepage-container {
+    padding: 2.5rem 1.5rem;
+  }
+
+  .hero-textbox h1 {
+    font-size: 1.5rem;
+  }
+
+  .tagline,
+  .description {
+    font-size: 0.9rem;
+  }
+
+  .cta {
+    padding: 0.8rem 1.2rem;
+    font-size: 0.8rem;
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 /*------------------------------------------*/
@@ -290,9 +386,10 @@ body {
 }
 
 .hero-textbox h1 {
-  font-size: 18px;
+  font-size: 25px;
   line-height: 2;
   margin-bottom: 15px;
+  margin-top: 25px;
   text-align: center;
 }
 
@@ -305,20 +402,23 @@ body {
   font-weight: bold;
   margin-top: 100px;
   font-size: 15px;
-  max-width: 600px;
+  max-width: 800px;
   margin-bottom: 25px;
   text-align: center;
-  height: 200px;
+  height: 100px;
 }
 
 /*------------------------------------------*/
 
 .links-row {
   display: flex;
-  flex-direction: column; /*guys i kinda changed the it kasi the bundle stuff was confusing*/
+  flex-direction: row; /*guys i kinda changed the it kasi the bundle stuff was confusing*/
   gap: 15px;
   font-size: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
 }
+
 
 
 .links-row a {
@@ -382,6 +482,16 @@ body {
   max-inline-size: calc(100vw - 40px);
 }
 
+#buddy-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.hidden {
+  display: none !important;
+}
+
+
 @media (max-width: 400px) {
   .buddy-dialogue {
     max-width: 90vw;
@@ -389,13 +499,13 @@ body {
 }
 
 
-/*------------------------------------------*/
+/*----------------Products------------------*/
 
 .products-section {
-  margin-top: -30px;   /* pull the whole section up */
-  margin-bottom: 3rem; /* keep spacing below */
+  margin-top: 30px;
+  margin-bottom: 3rem;
   padding-top: 0;
-  margin-top: -10px;  
+  animation: fadeIn 1s ease;
 }
 
 .section-title {
@@ -406,8 +516,8 @@ body {
   text-align: center;
   width: 100%;
   height: 20px;
-  display: block;            /* ensures it behaves like a block element */
-  transform: translateY(-15px); /* optional lift */
+  display: block;
+  transform: translateY(-15px);
 }
 
 .product-grid {
@@ -421,7 +531,7 @@ body {
   max-width: 1200px; 
 }
 
-.product-card { /*i changed some stuff here*/
+.product-card {
   border: 2px solid #000;
   border-radius: 15px;
   width: 200px;
@@ -442,7 +552,7 @@ body {
   transition: all 0.2s ease;
 }
 
-.product-card img { /*i changed some stuff here*/
+.product-card img { 
   max-width: 140px;
   max-height: 140px;
   width: 128px;
@@ -460,18 +570,18 @@ body {
 
 .product-card h3 {
   margin-top: 20px;
-  font-size: 0.8rem;   /* smaller text title */
+  font-size: 0.8rem;
   margin-bottom: 0.25rem;
 }
 
 .product-card p {
   margin-top: 20px;
-  font-size: 0.7rem;   /* smaller text body */
+  font-size: 0.7rem;
   margin-bottom: 0.25rem;
 }
 
 .product-card span {
-  font-size: 0.75rem;  /* price or details */
+  font-size: 0.75rem;
   font-weight: bold;
   color: #222;
 }
@@ -494,7 +604,7 @@ body {
 }
 
 
-/*------------------------------------------*/
+/*----------------Cart------------------*/
 
 .cart-popup {
   position: absolute;
@@ -552,7 +662,7 @@ body {
   margin-bottom: 20px;
 }
 
-/*------------------------------------------*/
+/*----------------Footer--------------------*/
 
 .site-footer {
   background-color: #f2f2f2;
@@ -567,3 +677,159 @@ body {
 .site-footer p {
   margin: 5px 0;
 }
+
+/*----------------About Us------------------*/
+
+.about-section {
+  padding: 4rem 2rem;
+  background-color: #f4f4f4;
+  font-family: 'Press Start 2P', cursive;
+  text-align: center;
+  color: #0f4f5a;
+}
+
+.about-container {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.brand-name {
+  color: teal;
+}
+
+.about-intro {
+  font-size: 0.9rem;
+  margin-bottom: 2.5rem;
+}
+
+/* Details block */
+.details {
+  max-width: 700px;
+  margin: 0 auto 3rem auto;
+  padding: 1.5rem 2rem;
+  background-color: rgba(0, 128, 128, 0.1);
+  border-radius: 1rem;
+  font-size: 0.75rem;
+  line-height: 1.8;
+  text-align: center;
+  color: #0f4f5a;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  font-family: 'Press Start 2P', cursive;
+}
+
+/* Team members */
+.team-grid {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2.5rem;
+  margin-top: 2rem;
+  width: 100%;
+}
+
+.team-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.team-member-card h2 {
+  font-size: 1.2rem;
+  margin-top: 1rem;
+  margin-bottom: 0.3rem;
+  text-align: center;
+  font-weight: bold;
+  color: #222;
+}
+
+.team-member-card em {
+  display: block;
+  font-style: italic;
+  font-size: 0.95rem;
+  color: #666;
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+
+.team-member-card p {
+  font-size: 0.9rem;
+  color: #444;
+  line-height: 1.4;
+  text-align: center;
+  margin: 0 1rem;
+}
+
+/* Flip animation for cards */
+.flip-card {
+  width: 160px;
+  height: 160px;
+  perspective: 800px;
+  border-radius: 50%;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+  cursor: pointer;
+}
+
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front,
+.flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  backface-visibility: hidden;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.flip-card-front img,
+.flip-card-back img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.flip-card-back {
+  transform: rotateY(180deg);
+}
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
+  .team-member-card {
+    width: 90%;
+  }
+}
+
+
+/*----------------Details------------------*/
+
+.details {
+  max-width: 700px;
+  margin: 0 auto 3rem auto;
+  padding: 1.5rem 2rem;
+  background-color: rgba(0, 128, 128, 0.1);
+  border-radius: 1rem;
+  font-size: 0.75rem; /* smaller size since the pixel font is thick */
+  line-height: 1.8; /* spread out lines more */
+  text-align: center;
+  color: #0f4f5a;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  font-family: 'Press Start 2P', cursive;
+}
+

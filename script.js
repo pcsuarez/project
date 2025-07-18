@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if (toggleBtn && buddyCharacter && buddySprite) {
     setInterval(() => {
       if (!buddyCharacter.classList.contains('hidden')) {
-        buddySprite.src = idleToggle ? 'asset/Skye_Idle.gif' : 'asset/Skye_Idle2.gif';
+        buddySprite.src = idleToggle ? '../asset/Skye_Idle.gif' : '../asset/Skye_Idle2.gif';
         idleToggle = !idleToggle;
       }
     }, 10000);
@@ -33,13 +33,13 @@ document.addEventListener('DOMContentLoaded', () => {
       const hour = new Date().getHours();
 
       const baseLines = [
-        "What are you going to be buying now?",
-        "Hmm. Limited Offers are available today.",
+        "What are you going\nto be buying now?",
+        "Hmm. Limited Offers\nare available today.",
         "The shop has new stuff.",
         "...",
         "Huh...",
         "This work is an inspiration\nto mimic the original.",
-        "Got pancakes?\nAsking for a friend."
+        "Got pancakes? Asking\nfor a friend."
       ];
 
       const cartLines = cart.length === 0
@@ -57,11 +57,11 @@ document.addEventListener('DOMContentLoaded', () => {
       const lines = [...timeLines, ...cartLines, ...baseLines];
       const randomLine = lines[Math.floor(Math.random() * lines.length)];
 
-      buddySprite.src = 'asset/Skye_Talking.gif';
+      buddySprite.src = '../asset/Skye_Talking.gif';
       typeDialogue(randomLine); 
 
       setTimeout(() => {
-        buddySprite.src = 'asset/Skye_Idle.gif';
+        buddySprite.src = '../asset/Skye_Idle.gif';
       }, 5000);
     });
     
@@ -195,5 +195,22 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+
+  function toggleImage(container) {
+    const img = container.querySelector('img');
+    const currentSrc = img.src;
+    const altSrc = img.getAttribute('data-alt');
+
+    img.src = altSrc;
+    img.setAttribute('data-alt', currentSrc);
+  }
+
+  document.querySelectorAll('.flip-card').forEach(card => {
+  card.addEventListener('click', () => {
+    card.classList.toggle('flipped');
+  });
+});
+
+  
 });
 
