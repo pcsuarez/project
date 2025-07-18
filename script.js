@@ -10,6 +10,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const buddyCharacter = document.querySelector('.buddy-character');
   const buddySprite = document.getElementById('buddy-sprite');
   const dialogue = document.getElementById('buddy-dialogue');
+  const dialogueBox = document.getElementById('buddy-dialogue');
+
 
   // === Buddy Character Setup ===
   let idleToggle = true;
@@ -31,13 +33,13 @@ document.addEventListener('DOMContentLoaded', () => {
       const hour = new Date().getHours();
 
       const baseLines = [
-        "What will you be buying now??",
-        "Hmm. Limited Offers are available today",
+        "What are you going to be buying now?",
+        "Hmm. Limited Offers are available today.",
         "The shop has new stuff.",
         "...",
         "Huh...",
-        "This work is an inspiration to mimic the original",
-        "Got snacks? Asking for a friend."
+        "This work is an inspiration\nto mimic the original.",
+        "Got pancakes?\nAsking for a friend."
       ];
 
       const cartLines = cart.length === 0
@@ -47,24 +49,55 @@ document.addEventListener('DOMContentLoaded', () => {
           : ["That's something."];
 
       const timeLines = hour >= 6 && hour < 12
-        ? ["Good morning. Ready to shop?"]
+        ? ["Good morning.\nReady to shop?"]
         : hour >= 12 && hour < 18
-          ? ["Have anything interesting this afternoon?"]
+          ? ["Have anything interesting\nthis afternoon?"]
           : ["It's late."];
 
       const lines = [...timeLines, ...cartLines, ...baseLines];
+      const randomLine = lines[Math.floor(Math.random() * lines.length)];
 
       buddySprite.src = 'asset/Skye_Talking.gif';
-      const randomLine = lines[Math.floor(Math.random() * lines.length)];
-      dialogue.textContent = randomLine;
-      dialogue.style.display = 'block';
+      typeDialogue(randomLine); 
 
       setTimeout(() => {
-        dialogue.style.display = 'none';
         buddySprite.src = 'asset/Skye_Idle.gif';
-      }, 7000);
+      }, 5000);
     });
+    
   } 
+
+  let typeIndex = 0;
+  let isTyping = false;
+  let typeTimeout;
+
+  function typeDialogue(text, speed = 30) {
+    if (isTyping) return;
+    isTyping = true;
+    typeIndex = 0;
+    let displayText = "";
+
+    dialogueBox.innerHTML = "";
+    dialogueBox.style.display = "block";
+
+    function type() {
+      if (typeIndex < text.length) {
+        const char = text.charAt(typeIndex);
+        displayText += char === "\n" ? "<br>" : char;
+        dialogueBox.innerHTML = displayText;
+        typeIndex++;
+        typeTimeout = setTimeout(type, speed);
+      } else {
+        isTyping = false;
+        setTimeout(() => {
+          dialogueBox.style.display = "none";
+        }, 7000); // Keep it on screen for a few seconds after typing
+      }
+    }
+
+    type();
+  }
+
 
   // === Cart Utilities ===
   function getCart() {
@@ -161,4 +194,6 @@ document.addEventListener('DOMContentLoaded', () => {
       setTimeout(() => pokeball.classList.remove('spin'), 3000);
     });
   }
+
 });
+
