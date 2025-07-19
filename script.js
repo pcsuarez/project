@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-  
+
   // === Element Selectors ===
   const toggleBtn = document.getElementById('toggle-character');
   const buddyCharacter = document.querySelector('.buddy-character');
@@ -10,59 +10,101 @@ document.addEventListener('DOMContentLoaded', () => {
   const pesoTotal = document.getElementById('peso-total');
   const cartItemsContainer = document.getElementById('cart-items');
   const cartTotalDisplay = document.getElementById('cart-total');
+  const loggedInUser = localStorage.getItem('loggedInUser');
+  const userNameDisplay = document.getElementById('user-name-display');
+  const logoutMenu = document.getElementById('logout-menu');
+  const logoutBtn = document.getElementById('logout-btn');
 
-  // === Buddy Character Interaction ===
-  let isBuddyVisible = true;
-  let isTalking = false;
+  const cart = JSON.parse(localStorage.getItem('cart')) || [];
 
+  // === User Greeting + Logout ===
+  if (loggedInUser) {
+    const user = JSON.parse(localStorage.getItem(loggedInUser));
+
+    if (userNameDisplay && user) {
+      userNameDisplay.textContent = `${user.firstName}`;
+      userNameDisplay.style.display = 'inline';
+
+      userNameDisplay.addEventListener('click', (e) => {
+      e.stopPropagation(); // Prevent click from bubbling to document
+      logoutMenu.style.display = logoutMenu.style.display === 'block' ? 'none' : 'block';
+    });
+
+    // Hide logout menu if clicking outside
+    document.addEventListener('click', (e) => {
+      const dropdown = document.getElementById('user-dropdown');
+      if (!dropdown.contains(e.target)) {
+        logoutMenu.style.display = 'none';
+      }
+    });
+
+      // Logout logic
+      logoutBtn.addEventListener('click', () => {
+        localStorage.removeItem('loggedInUser');
+        location.reload();
+      });
+    }
+  }
+
+  // === Buddy Character Logic ===
   if (toggleBtn && buddyCharacter && buddySprite) {
-    // Idle sprite re-apply every 10s to prevent frozen frame
+    let isBuddyVisible = false;
+    let isTalking = false;
+
+    // Hide it by default
+    buddyCharacter.classList.add('slide-away');
+    buddyCharacter.style.display = 'none';
+    toggleBtn.textContent = 'Bring Out Buddy';
+
+    // Reset the idle animation every 10 seconds if not talking
     setInterval(() => {
       if (buddyCharacter.offsetParent !== null && !isTalking) {
         buddySprite.src = '/asset/sprites/Skye_Idle.gif';
       }
     }, 10000);
 
-    // Toggle buddy visibility
     toggleBtn.addEventListener('click', () => {
       if (isBuddyVisible) {
+        // Hide the buddy
         buddyCharacter.classList.remove('slide-back');
         buddyCharacter.classList.add('slide-away');
-        setTimeout(() => (buddyCharacter.style.display = 'none'), 500);
-        toggleBtn.textContent = 'Bring Out Buddy';
+
+        setTimeout(() => {
+          buddyCharacter.style.display = 'none';
+          isBuddyVisible = false;
+          toggleBtn.textContent = 'Bring Out Buddy';
+        }, 500);
       } else {
+        // Show the buddy
         buddyCharacter.style.display = 'flex';
         void buddyCharacter.offsetWidth;
+
         buddyCharacter.classList.remove('slide-away');
         buddyCharacter.classList.add('slide-back');
+
+        isBuddyVisible = true;
         toggleBtn.textContent = 'Put Away Buddy';
       }
-      isBuddyVisible = !isBuddyVisible;
     });
 
-    // Talking interaction
     buddySprite.addEventListener('click', () => {
       const hour = new Date().getHours();
+      const timeLines =
+        hour >= 6 && hour < 12
+          ? ["Good morning.\nReady to shop?"]
+          : hour >= 12 && hour < 18
+            ? ["Have anything interesting\nthis afternoon?"]
+            : ["It's late."];
 
       const baseLines = [
         "What are you going\nto be buying now?",
         "Hmm. Limited Offers\nare available today.",
         "The shop has new stuff.",
-        "...",
-        "Hm?",
-        "Huh...",
+        "...", "Hm?", "Huh...",
         "This work is an inspiration\nto mimic the original.",
         "Got pancakes? Asking\nfor a friend.",
         "Ever heard of\na Jet2Holiday?"
       ];
-
-      //Timed Talking Interaction 
-      const timeLines =
-        hour >= 6 && hour < 12
-          ? ["Good morning.\nReady to shop?"]
-          : hour >= 12 && hour < 18
-          ? ["Have anything interesting\nthis afternoon?"]
-          : ["It's late."];
 
       const lines = [...timeLines, ...baseLines];
       const randomLine = lines[Math.floor(Math.random() * lines.length)];
@@ -70,21 +112,17 @@ document.addEventListener('DOMContentLoaded', () => {
       isTalking = true;
       buddySprite.src = '/asset/sprites/Skye_Talking.gif';
       typeDialogue(randomLine);
-
       setTimeout(() => {
         buddySprite.src = '/asset/sprites/Skye_Idle.gif';
         isTalking = false;
-      }, 10000);
+      }, 3000);
     });
   }
 
-
-
-  // === Dialogue Typing Function ===
-  let isTyping = false;
+  // === Dialogue Typing Effect ===
   function typeDialogue(text, speed = 30) {
-    if (isTyping) return;
-    isTyping = true;
+    if (dialogueBox.isTyping) return;
+    dialogueBox.isTyping = true;
 
     let index = 0;
     let displayText = "";
@@ -98,7 +136,7 @@ document.addEventListener('DOMContentLoaded', () => {
         index++;
         setTimeout(type, speed);
       } else {
-        isTyping = false;
+        dialogueBox.isTyping = false;
         setTimeout(() => dialogueBox.style.display = "none", 7000);
       }
     })();
@@ -118,20 +156,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // === Add to Cart Logic ===
-  const cart = JSON.parse(localStorage.getItem('cart')) || [];
-
-  let subtotal = 0;
-  cart.forEach(item => {
-    const priceNumber = parseFloat(item.price.replace(/[₱,]/g, '')) || 0;
-    subtotal += priceNumber;
-  });
-
-  if (itemCount) itemCount.textContent = cart.length;
-  if (pesoTotal) pesoTotal.textContent = subtotal.toFixed(2);
-
-
-
+  // === Add to Cart ===
   document.querySelectorAll('.add-to-cart').forEach((button) => {
     button.addEventListener('click', () => {
       const productCard = button.closest('.product-card');
@@ -140,28 +165,43 @@ document.addEventListener('DOMContentLoaded', () => {
       const img = productCard.querySelector('img').src;
 
       const item = { name, price, img };
+      const currentCart = JSON.parse(localStorage.getItem('cart')) || [];
 
-      cart.push(item);
-      localStorage.setItem('cart', JSON.stringify(cart));
+      currentCart.push(item);
+      localStorage.setItem('cart', JSON.stringify(currentCart));
 
-      let subtotal = 0;
-      cart.forEach(item => {
-        const priceNumber = parseFloat(item.price.replace(/[₱,]/g, '')) || 0;
-        subtotal += priceNumber;
-      });
+      if (itemCount) itemCount.textContent = currentCart.length;
 
-      if (itemCount) itemCount.textContent = cart.length;
-      if (pesoTotal) pesoTotal.textContent = subtotal.toFixed(2);
+      if (pesoTotal) {
+        let subtotal = 0;
+        currentCart.forEach(item => {
+          const priceNumber = parseFloat(item.price.replace(/[₱,]/g, '')) || 0;
+          subtotal += priceNumber;
+        });
+        pesoTotal.textContent = subtotal.toFixed(2);
+      }
     });
   });
 
+  // === Cart Mini Display (Subtotal & Count) ===
+  if (itemCount) itemCount.textContent = cart.length;
 
-  // === Render Cart Page Items (if any) ===
+  if (pesoTotal) {
+    let subtotal = 0;
+    cart.forEach(item => {
+      const priceNumber = parseFloat(item.price.replace(/[₱,]/g, '')) || 0;
+      subtotal += priceNumber;
+    });
+    pesoTotal.textContent = subtotal.toFixed(2);
+  }
+
+  // === Cart Page Rendering ===
   if (cartItemsContainer && cartTotalDisplay) {
     let total = 0;
 
-    cart.forEach(item => {
-      const priceNumber = parseFloat(item.price.replace(/[₱]/g, '')) || 0;
+    cart.forEach((item, index) => {
+      const cleanPrice = item.price.replace(/[^\d.]/g, '');
+      const priceNumber = parseFloat(cleanPrice) || 0;
       total += priceNumber;
 
       const itemElement = document.createElement('div');
@@ -170,16 +210,35 @@ document.addEventListener('DOMContentLoaded', () => {
         <img src="${item.img}" alt="${item.name}">
         <h3>${item.name}</h3>
         <p>${item.price}</p>
+        <button class="remove-btn" data-index="${index}">Remove</button>
       `;
       cartItemsContainer.appendChild(itemElement);
     });
 
-    cartTotalDisplay.textContent = `Total: ₱${total}`;
+    cartTotalDisplay.textContent = `₱${total.toFixed(2)}`;
+
+    cartItemsContainer.addEventListener('click', (e) => {
+      if (e.target.classList.contains('remove-btn')) {
+        const index = parseInt(e.target.getAttribute('data-index'));
+        cart.splice(index, 1);
+        localStorage.setItem('cart', JSON.stringify(cart));
+        window.location.reload();
+      }
+    });
   }
+
 });
 
-// === Checkout Function ===
+// === Checkout ===
+
 function checkout() {
+  const loggedInUser = localStorage.getItem('loggedInUser');
+  if (!loggedInUser) {
+    alert("You need to log in before checking out!");
+    window.location.href = "login.html";
+    return;
+  }
+
   alert("Thank you for your purchase!");
   localStorage.removeItem('cart');
   window.location.reload();

@@ -16,9 +16,6 @@ body {
   align-items: flex-start; /* stick to top-ish */
 }
 
-.page-wrapper {
-  padding-top: 75px; /* same reason */
-}
 
 /*------------------------------------------*/
 
@@ -30,14 +27,15 @@ body {
   top: 0;
   left: 0;
   width: 100%;
-  height: 120px;
+  height: 100px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 0 30px;
   color: white;
-  overflow: hidden;
+  overflow:  visible;
   z-index: 1002;
+  box-shadow: 0 2px 10px rgb(147, 147, 147);
 }
 
 
@@ -51,7 +49,7 @@ body {
   background: url(asset/Tubig.gif);
   background-size: cover;
   background-repeat: no-repeat;
-  z-index: -1; /* Behind the text */
+  z-index: -1;
 }
 
 .top-left {
@@ -98,6 +96,22 @@ body {
   box-shadow: 0 0 6px #aaa;
   border: 2px solid #ccc;
 }
+
+.top-right {
+  transition: background-color 0.2s, color 0.2s;
+  padding: 6px 12px;
+  border-radius: 6px;
+}
+
+.top-right:hover {
+  background-color: #fff;
+  color: #009688;
+}
+
+.top-right:hover #user-name-display {
+  color: #009688;
+}
+
 
 @media (max-width: 768px) {
   .top-bar {
@@ -148,19 +162,41 @@ body {
   animation: spin 1s linear infinite;
 }
 
+@media (max-width: 600px) {
+  .pokeball-icon {
+    width: 80px;
+    height: 80px;
+  }
+}
+
+
 /*------------------Homepage------------------------*/
 
 .homepage-container {
   max-width: 900px;
   width: 100%;
   background-color: rgba(255, 255, 255, 0.9);
-  padding: 4rem 3rem;
+  padding: 40px 3rem;
   border-radius: 2rem;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(10px);
   animation: fadeIn 1s ease;
-  margin-bottom: -500px;
   margin: 0 auto;
+  margin-bottom: 50px;
+}
+
+.aboutus-container {
+  max-width: 900px;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 200px 3rem;
+  border-radius: 2rem;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  animation: fadeIn 1s ease;
+  margin: 0 auto;
+  margin-bottom: 50px;
+  margin-top: -100px;
 }
 
 .brand-name {
@@ -255,11 +291,12 @@ body {
 }
 
 .main-nav a {
+  background-color: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(6px);
   color: #fff;
   text-decoration: none;
   padding: 6px 12px;
   font-size: 14px;
-  background-color: transparent;
   border: 2px solid transparent;
   transition: 0.2s ease;
   white-space: nowrap;
@@ -270,6 +307,7 @@ body {
   background-color: #ffffff;
   color: #000000;
   border: 2px solid #ccc;
+  padding: 1;
 }
 
 
@@ -318,11 +356,6 @@ body {
     align-items: center;
     gap: 10px;
   }
-
-  .pokeball-icon {
-    width: 40px;
-    height: 40px;
-  }
 }
 
 
@@ -356,19 +389,17 @@ body {
 /*------------------------------------------*/
 
 .subnav {
-  display: flex;
   justify-content: center;
   align-items: center;
   padding: 10px 20px;
   background-color: #fefefe;
-  border-bottom: 2px solid #0f224a;
   font-family: 'Press Start 2P', cursive;
   font-size: 12px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 5px rgb(165, 165, 165);
   position: fixed;
-  top: 120px;
-  left: 0;
-  width: 100%;
+  top: 100px;
+  right: 0;
+  width: 130;
   z-index: 1001;
 }
 
@@ -402,6 +433,7 @@ body {
   .subnav {
     justify-content: center;
     padding: 8px 10px;
+    margin-top: 105px;
   }
 
   .subnav .user-info a {
@@ -435,9 +467,9 @@ body {
   align-items: center;
   justify-content: center;
   text-align: center;
-  max-width: 1200px;
+  max-width: 800px;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 30px;
 }
 
 .hero-textbox h1 {
@@ -669,6 +701,7 @@ body {
   border: none;
   cursor: pointer;
   font-family: 'Press Start 2P', cursive;
+  color: #000;
 }
 
 .remove-btn {
@@ -742,7 +775,7 @@ body {
 /*----------------Cart------------------*/
 
 .cart-main {
-  padding: 30px;
+  padding: 0px;
   text-align: center;
 }
 
@@ -1002,15 +1035,15 @@ body {
 /*----------------Register------------------*/
 
 .registration-container {
-  max-width: 5000px;
+  max-width: 500px;
   width: 100%;
   background-color: rgba(255, 255, 255, 0.9);
-  padding: 3rem 2rem;
+  padding: 40px 2rem;
   border-radius: 1.5rem;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(10px);
   animation: fadeIn 0.8s ease;
-  margin: 50px auto 2rem;
+  margin: 30px auto 20px;
   font-family: 'Press Start 2P', cursive;
   transition: transform 0.2s ease;
 }
@@ -1018,7 +1051,7 @@ body {
 
 .registration-container h2 {
   text-align: center;
-  font-size: 16px;
+  font-size: 20px;
   margin-bottom: 20px;
 }
 
@@ -1042,32 +1075,10 @@ select {
   border-radius: 4px;
   width: 100%;
   box-sizing: border-box;
-  tex
+  
 }
 
-button {
-  margin-top: 15px;
-  padding: 10px;
-  background-color: #ffcb05;
-  border: 2px solid #000;
-  cursor: pointer;
-  font-size: 12px;
-  transition: background 0.3s ease;
-}
 
-button:hover {
-  background-color: #ffe266;
-}
-
-.back-link {
-  margin-top: 20px;
-  display: block;
-  text-align: center;
-  font-size: 10px;
-  text-decoration: underline;
-  color: #3b4cca;
-  text-align: center;
-}
 
 @media (max-width: 200px) {
   .registration-container {
@@ -1102,7 +1113,7 @@ button:hover {
 /*----------------Login------------------*/
 
 .login-container {
-  max-width: 5000px;
+  max-width: 500px;
   width: 100%;
   background-color: rgba(255, 255, 255, 0.9);
   padding: 3rem 2rem;
@@ -1118,8 +1129,7 @@ button:hover {
 
 .login-container:hover {
   transform: translateY(-4px);
-  box-shadow: 8px 8px 25px rgba(0, 0, 0, 0.15),
-              -8px -8px 25px rgba(255, 255, 255, 0.5);
+  box-shadow: 8px 8px 25px rgba(0, 0, 0, 0.15), -8px -8px 25px rgba(255, 255, 255, 0.5);
 }
 
 
@@ -1163,7 +1173,9 @@ button {
 }
 
 button:hover {
+  color: white;
   background-color: #5f6ce0;
+  border: turquoise;
 }
 
 .back-link {
@@ -1173,6 +1185,7 @@ button:hover {
   font-size: 10px;
   text-decoration: underline;
   color: #3b4cca;
+
 }
 
 @media (max-width: 200px) {
@@ -1203,3 +1216,115 @@ button:hover {
     font-size: 14px;
   }
 }
+
+/*----------------Logout------------------*/
+
+#logout-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  z-index: 9999;
+  min-height: 40px;
+  padding: 6px 0;
+}
+
+#logout-btn {
+  background: none;
+  border: none;
+  padding: 6px 12px;
+  text-align: left;
+  cursor: pointer;
+  width: 100%;
+  font-size: 14px;
+  color: #333;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+#logout-btn:hover {
+  background-color: #fff;
+  color: #009688;
+}
+
+
+/*----------------Login------------------*/
+
+.description{
+  max-width: 700px;
+  margin: 0 auto 3rem auto;
+  padding: 1.5rem 2rem;
+  background-color: rgba(0, 128, 128, 0.1);
+  border-radius: 1rem;
+  font-size: 0.75rem; /* smaller size since the pixel font is thick */
+  line-height: 1.8; /* spread out lines more */
+  text-align: center;
+  color: #0f4f5a;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  font-family: 'Press Start 2P', cursive;
+}
+
+/*----------------Bud------------------*/
+
+.bud {
+  margin-top: 40px;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.85);
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.bud h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 20px;
+}
+
+.bud-card {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.bud-image {
+  width: 100%;
+  max-height: 200px; /* limit the height but don't force it */
+  object-fit: contain;
+  border-radius: 12px;
+  background: #fff;
+  padding: 5px;
+  border: 2px solid #ccc;
+  margin-bottom: 30px;
+}
+
+.bud-info {
+  max-width: 400px;
+}
+
+.bud-info h3 {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+.bud-info p {
+  font-size: 9px;
+  line-height: 1.6;
+  padding: 2px auto;
+}
+
+@media (max-width: 600px) {
+  .bud-card {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .bud-image {
+    margin-bottom: 10px;
+  }
+}
+
+
