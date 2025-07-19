@@ -49,11 +49,14 @@ document.addEventListener('DOMContentLoaded', () => {
         "Hmm. Limited Offers\nare available today.",
         "The shop has new stuff.",
         "...",
+        "Hm?",
         "Huh...",
         "This work is an inspiration\nto mimic the original.",
-        "Got pancakes? Asking\nfor a friend."
+        "Got pancakes? Asking\nfor a friend.",
+        "Ever heard of\na Jet2Holiday?"
       ];
 
+      //Timed Talking Interaction 
       const timeLines =
         hour >= 6 && hour < 12
           ? ["Good morning.\nReady to shop?"]
@@ -71,7 +74,7 @@ document.addEventListener('DOMContentLoaded', () => {
       setTimeout(() => {
         buddySprite.src = '/asset/sprites/Skye_Idle.gif';
         isTalking = false;
-      }, 5000);
+      }, 10000);
     });
   }
 
