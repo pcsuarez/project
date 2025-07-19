@@ -2,47 +2,56 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Poké Basket - Pokémon Go Store</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pokémon Go Web Store</title>
   <link rel="stylesheet" href="../style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 </head>
+
 <body>
+
+  <!-- Top Navigation Bar -->
   <header class="top-bar">
     <div class="top-left">
-      <img src="../images/PokemonGo Logo.png" alt="Pokeball Logo" class="pokeball-icon">
+      <img src="../asset/PokemonGo Logo.png" alt="Pokeball Logo" class="pokeball-icon" />
+
       <nav class="main-nav">
-        <a href="../index.html">Back to Store</a>
+        <a href="../index.html">Home</a>
+        <a href="/pages/service.html">Web Store</a>
+        <a href="/pages/aboutus.html">About Us</a>
+        <a href="#">Sign UP | IN</a>
       </nav>
+    </div>
+
+    <div class="top-right">
+      <button class="menu-btn">SHOP</button>
+      <a href="login page/login.html" class="menu-btn">NAME</a>
     </div>
   </header>
 
+  <!-- Main Cart Section -->
+  <main class="cart-main">
+    <h1 class="cart-title">Your Poké Basket</h1>
 
-  <main style="padding: 30px;">
-    <h1 style="font-size: 16px; margin-bottom: 30px;"> Your Poké Basket</h1>
     <div id="cart-items" class="products-container"></div>
 
+    <h2 id="cart-total" class="cart-total"></h2>
 
-    <h2 id="cart-total" style="margin-top: 20px; font-size: 14px;"></h2>
-
-
-    <div style="margin-top: 20px;">
-      <a href="../index.html" class="menu-btn">Continue Shopping</a>
+    <div class="cart-buttons">
+      <a href="../pages/service.html" class="menu-btn">Continue Shopping</a>
       <button class="menu-btn" onclick="checkout()">Checkout</button>
     </div>
   </main>
 
-<footer class="site-footer">
-  <p>This is a Student Project and only used for Educational Projects, all materials used are hand made
-  <p>referenced and displayed in our <a href="#">reference page</a>.
-  </p>
-  <p>©2023 Niantic, Inc. ©2023 Pokémon. ©1995–2023 Nintendo / Creatures Inc. / GAME FREAK inc. Pokémon
-  <p>and Pokémon character names are trademarks of Nintendo.</p>
-</footer>
-
-<script src="script.js"></script>
+  <!-- Footer -->
+  <footer class="site-footer">
+    <p>This is a student project and only used for educational purposes. All materials used are handmade, 
+    referenced, and displayed in our <a href="#">reference page</a>.</p>
+    <p>©2023 Niantic, Inc. ©2023 Pokémon. ©1995–2023 Nintendo / Creatures Inc. / GAME FREAK inc. Pokémon
+    and Pokémon character names are trademarks of Nintendo.</p>
+  </footer>
 
 </body>
+
+  <script src="../script.js"></script>
 </html>
-
-
-

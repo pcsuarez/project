@@ -1,35 +1,47 @@
 document.addEventListener('DOMContentLoaded', () => {
-  let basketCount = 0;
-  let totalCoins = 0;
-
-  const userInfo = document.querySelector('.user-info');
-  const cartPopup = document.querySelector('.cart-popup');
-  const cartItems = document.getElementById('cart-items');
-  const cartTotal = document.getElementById('cart-total');
+  
+  // === Element Selectors ===
   const toggleBtn = document.getElementById('toggle-character');
   const buddyCharacter = document.querySelector('.buddy-character');
   const buddySprite = document.getElementById('buddy-sprite');
-  const dialogue = document.getElementById('buddy-dialogue');
   const dialogueBox = document.getElementById('buddy-dialogue');
+  const pokeball = document.querySelector('.pokeball-icon');
+  const itemCount = document.getElementById('item-count');
+  const pesoTotal = document.getElementById('peso-total');
+  const cartItemsContainer = document.getElementById('cart-items');
+  const cartTotalDisplay = document.getElementById('cart-total');
 
+  // === Buddy Character Interaction ===
+  let isBuddyVisible = true;
+  let isTalking = false;
 
-  // === Buddy Character Setup ===
-  let idleToggle = true;
   if (toggleBtn && buddyCharacter && buddySprite) {
+    // Idle sprite re-apply every 10s to prevent frozen frame
     setInterval(() => {
-      if (!buddyCharacter.classList.contains('hidden')) {
-        buddySprite.src = idleToggle ? '../asset/Skye_Idle.gif' : '../asset/Skye_Idle2.gif';
-        idleToggle = !idleToggle;
+      if (buddyCharacter.offsetParent !== null && !isTalking) {
+        buddySprite.src = '/asset/sprites/Skye_Idle.gif';
       }
     }, 10000);
 
+    // Toggle buddy visibility
     toggleBtn.addEventListener('click', () => {
-      buddyCharacter.classList.toggle('hidden');
-      toggleBtn.textContent = buddyCharacter.classList.contains('hidden') ? 'Bring Out Buddy' : 'Put Away Buddy';
+      if (isBuddyVisible) {
+        buddyCharacter.classList.remove('slide-back');
+        buddyCharacter.classList.add('slide-away');
+        setTimeout(() => (buddyCharacter.style.display = 'none'), 500);
+        toggleBtn.textContent = 'Bring Out Buddy';
+      } else {
+        buddyCharacter.style.display = 'flex';
+        void buddyCharacter.offsetWidth;
+        buddyCharacter.classList.remove('slide-away');
+        buddyCharacter.classList.add('slide-back');
+        toggleBtn.textContent = 'Put Away Buddy';
+      }
+      isBuddyVisible = !isBuddyVisible;
     });
 
+    // Talking interaction
     buddySprite.addEventListener('click', () => {
-      const cart = JSON.parse(localStorage.getItem("cart")) || [];
       const hour = new Date().getHours();
 
       const baseLines = [
@@ -42,152 +54,54 @@ document.addEventListener('DOMContentLoaded', () => {
         "Got pancakes? Asking\nfor a friend."
       ];
 
-      const cartLines = cart.length === 0
-        ? ["Basket's empty."]
-        : cart.length < 3
-          ? ["Hm..."]
-          : ["That's something."];
-
-      const timeLines = hour >= 6 && hour < 12
-        ? ["Good morning.\nReady to shop?"]
-        : hour >= 12 && hour < 18
+      const timeLines =
+        hour >= 6 && hour < 12
+          ? ["Good morning.\nReady to shop?"]
+          : hour >= 12 && hour < 18
           ? ["Have anything interesting\nthis afternoon?"]
           : ["It's late."];
 
-      const lines = [...timeLines, ...cartLines, ...baseLines];
+      const lines = [...timeLines, ...baseLines];
       const randomLine = lines[Math.floor(Math.random() * lines.length)];
 
-      buddySprite.src = '../asset/Skye_Talking.gif';
-      typeDialogue(randomLine); 
+      isTalking = true;
+      buddySprite.src = '/asset/sprites/Skye_Talking.gif';
+      typeDialogue(randomLine);
 
       setTimeout(() => {
-        buddySprite.src = '../asset/Skye_Idle.gif';
+        buddySprite.src = '/asset/sprites/Skye_Idle.gif';
+        isTalking = false;
       }, 5000);
     });
-    
-  } 
+  }
 
-  let typeIndex = 0;
+
+
+  // === Dialogue Typing Function ===
   let isTyping = false;
-  let typeTimeout;
-
   function typeDialogue(text, speed = 30) {
     if (isTyping) return;
     isTyping = true;
-    typeIndex = 0;
-    let displayText = "";
 
+    let index = 0;
+    let displayText = "";
     dialogueBox.innerHTML = "";
     dialogueBox.style.display = "block";
 
-    function type() {
-      if (typeIndex < text.length) {
-        const char = text.charAt(typeIndex);
-        displayText += char === "\n" ? "<br>" : char;
+    (function type() {
+      if (index < text.length) {
+        displayText += text.charAt(index) === "\n" ? "<br>" : text.charAt(index);
         dialogueBox.innerHTML = displayText;
-        typeIndex++;
-        typeTimeout = setTimeout(type, speed);
+        index++;
+        setTimeout(type, speed);
       } else {
         isTyping = false;
-        setTimeout(() => {
-          dialogueBox.style.display = "none";
-        }, 7000); // Keep it on screen for a few seconds after typing
+        setTimeout(() => dialogueBox.style.display = "none", 7000);
       }
-    }
-
-    type();
+    })();
   }
 
-
-  // === Cart Utilities ===
-  function getCart() {
-    return JSON.parse(localStorage.getItem("cart")) || [];
-  }
-
-  function saveCart(cart) {
-    localStorage.setItem("cart", JSON.stringify(cart));
-  }
-
-  function updateCartDisplay() {
-    const cart = getCart();
-    const itemCount = cart.length;
-    const coinSum = cart.reduce((total, item) => total + (item.price || 0), 0);
-
-    const itemCountEl = document.getElementById("item-count");
-    const coinCountEl = document.getElementById("cart-count");
-
-    if (itemCountEl) itemCountEl.textContent = itemCount;
-    if (coinCountEl) coinCountEl.textContent = `${coinSum} PokéCoins |`;
-  }
-
-  function updateUserInfo() {
-    if (userInfo) {
-      userInfo.textContent = `${totalCoins} PokéCoins | Basket (${basketCount})`;
-    }
-  }
-
-  updateCartDisplay();
-  updateUserInfo();
-
-  // Toggle cart popup
-  if (userInfo && cartPopup) {
-    userInfo.addEventListener('click', () => {
-      cartPopup.style.display = cartPopup.style.display === 'block' ? 'none' : 'block';
-    });
-  }
-
-  // Add to cart
-  document.querySelectorAll('.add-to-cart').forEach(button => {
-    button.addEventListener('click', () => {
-      const productCard = button.closest('.product-card');
-      const name = productCard.querySelector('h3').innerText;
-      const priceText = productCard.querySelector('p').innerText;
-      const price = parseInt(priceText.replace(/\D/g, ''), 10);
-
-      const item = { name, price };
-      addToCart(item);
-
-      basketCount++;
-      totalCoins += price;
-
-      const li = document.createElement('li');
-      li.textContent = `${name} - ${price} PokéCoins`;
-      if (cartItems) cartItems.appendChild(li);
-
-      if (cartTotal) cartTotal.textContent = `Total: ${totalCoins} PokéCoins`;
-      updateUserInfo();
-
-      console.log(`Added to basket: ${name} - ${price} PokéCoins`);
-    });
-  });
-
-  function addToCart(item) {
-    const cart = getCart();
-    cart.push(item);
-    saveCart(cart);
-    updateCartDisplay();
-  }
-
-  // Load cart items into popup
-  const cart = getCart();
-  if (cartItems) {
-    if (cart.length === 0) {
-      cartItems.innerHTML = "<p>Your Poké Basket is empty.</p>";
-    } else {
-      cart.forEach((item, index) => {
-        const itemEl = document.createElement("div");
-        itemEl.className = "cart-item";
-        itemEl.innerHTML = `
-          <strong>${item.name}</strong> - ${item.price} PokéCoins
-          <button onclick="removeFromCart(${index})">Remove</button>
-        `;
-        cartItems.appendChild(itemEl);
-      });
-    }
-  }
-
-  // Pokéball animation
-  const pokeball = document.querySelector('.pokeball-icon');
+  // === UI Effects ===
   if (pokeball) {
     pokeball.addEventListener('click', () => {
       pokeball.classList.add('spin');
@@ -195,22 +109,75 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-
-  function toggleImage(container) {
-    const img = container.querySelector('img');
-    const currentSrc = img.src;
-    const altSrc = img.getAttribute('data-alt');
-
-    img.src = altSrc;
-    img.setAttribute('data-alt', currentSrc);
-  }
-
   document.querySelectorAll('.flip-card').forEach(card => {
-  card.addEventListener('click', () => {
-    card.classList.toggle('flipped');
+    card.addEventListener('click', () => {
+      card.classList.toggle('flipped');
+    });
   });
+
+  // === Add to Cart Logic ===
+  const cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+  let subtotal = 0;
+  cart.forEach(item => {
+    const priceNumber = parseFloat(item.price.replace(/[₱,]/g, '')) || 0;
+    subtotal += priceNumber;
+  });
+
+  if (itemCount) itemCount.textContent = cart.length;
+  if (pesoTotal) pesoTotal.textContent = subtotal.toFixed(2);
+
+
+
+  document.querySelectorAll('.add-to-cart').forEach((button) => {
+    button.addEventListener('click', () => {
+      const productCard = button.closest('.product-card');
+      const name = productCard.querySelector('h3').textContent;
+      const price = productCard.querySelector('p').textContent.replace('Price: ', '');
+      const img = productCard.querySelector('img').src;
+
+      const item = { name, price, img };
+
+      cart.push(item);
+      localStorage.setItem('cart', JSON.stringify(cart));
+
+      let subtotal = 0;
+      cart.forEach(item => {
+        const priceNumber = parseFloat(item.price.replace(/[₱,]/g, '')) || 0;
+        subtotal += priceNumber;
+      });
+
+      if (itemCount) itemCount.textContent = cart.length;
+      if (pesoTotal) pesoTotal.textContent = subtotal.toFixed(2);
+    });
+  });
+
+
+  // === Render Cart Page Items (if any) ===
+  if (cartItemsContainer && cartTotalDisplay) {
+    let total = 0;
+
+    cart.forEach(item => {
+      const priceNumber = parseFloat(item.price.replace(/[₱]/g, '')) || 0;
+      total += priceNumber;
+
+      const itemElement = document.createElement('div');
+      itemElement.classList.add('product-card');
+      itemElement.innerHTML = `
+        <img src="${item.img}" alt="${item.name}">
+        <h3>${item.name}</h3>
+        <p>${item.price}</p>
+      `;
+      cartItemsContainer.appendChild(itemElement);
+    });
+
+    cartTotalDisplay.textContent = `Total: ₱${total}`;
+  }
 });
 
-  
-});
-
+// === Checkout Function ===
+function checkout() {
+  alert("Thank you for your purchase!");
+  localStorage.removeItem('cart');
+  window.location.reload();
+}

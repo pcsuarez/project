@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Register - Pokémon Go Web Store</title>
+  <link rel="stylesheet" href="../style.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  
+  <style>
+    body {
+      background-color: white;
+      font-family: 'Press Start 2P', cursive;
+      padding: 30px;
+      color: #0f4f5a;
+    }
+
+    .registration-container {
+      max-width: 600px;
+      margin: 0 auto;
+      border: 2px solid #000;
+      padding: 20px;
+      background: #fefefe;
+    }
+
+    .registration-container h2 {
+      text-align: center;
+      font-size: 16px;
+      margin-bottom: 20px;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    label {
+      font-size: 10px;
+    }
+
+    input, select {
+      font-family: 'Press Start 2P', cursive;
+      padding: 8px;
+      font-size: 10px;
+      width: 100%;
+    }
+
+    button {
+      margin-top: 15px;
+      padding: 10px;
+      background-color: #ffcb05;
+      border: none;
+      cursor: pointer;
+      font-family: 'Press Start 2P', cursive;
+      font-size: 12px;
+    }
+
+    .back-link {
+      margin-top: 20px;
+      display: block;
+      text-align: center;
+      font-size: 10px;
+      text-decoration: underline;
+      color: #3b4cca;
+    }
+  </style>
+</head>
+
+<body> 
+     <!-- (Kinda reuse the same structure from homepage dito hehe) -->
+     <header class="top-bar">
+    <div class="top-left">
+      <img src="../asset/PokemonGo Logo.png" alt="Pokeball Logo" class="pokeball-icon">
+
+      <nav class="main-nav">
+        <a href="../index.html">Home</a>
+        <a href="service.html">Web Store</a>
+        <a href="aboutus.html">About Us</a>
+        <a href="#">Sign UP | IN</a>
+      </nav>
+    </div>
+
+    <div class="top-right">
+      <button class="menu-btn">SHOP</button>
+      <a href="../login page/login.html" class="menu-btn">NAME</a>
+    </div>
+  </header>
+
+  <div class="subnav">
+    <div class="user-info">
+      <span id="cart-count">0 PokéCoins | </span><a href="cart.html"> Basket (<span id="item-count">0</span>)</a>
+    </div>
+  </div>
+
+  <div class="registration-container">
+    <h2>Trainer Registration</h2>
+    <form action="#" method="post">
+
+      <label for="first-name">First Name:</label>
+      <input type="text" id="first-name" name="first-name" required>
+
+      <label for="middle-name">Middle Name:</label>
+      <input type="text" id="middle-name" name="middle-name" required>
+
+      <label for="last-name">Last Name:</label>
+      <input type="text" id="last-name" name="last-name" required>
+
+      <label for="gender">Gender:</label>
+
+      <select id="gender" name="gender" required>
+
+        <option value="">-- Select --</option>
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+        <option value="nonbinary">Non-binary</option>
+        <option value="prefer-not">Prefer not to say</option>
+
+      </select>
+
+      <label for="birthday">Birthday:</label>
+      <input type="date" id="birthday" name="birthday" required>
+
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required>
+
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" required>
+
+      <label for="confirm-password">Confirm Password:</label>
+      <input type="password" id="confirm-password" name="confirm-password" required>
+
+      <label for="pgocode">Pokémon GO Account Code:</label>
+      <input type="text" id="pgocode" name="pgocode" required>
+
+      <button type="submit"> Register </button>
+
+      <a href="../pages/" class="back-link">Already have an account? Login</a>
+
+    </form>
+    <a href="../index.html" class="back-link">← Back to Home</a>
+  </div>
+</body>
+</html>
