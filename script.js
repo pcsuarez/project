@@ -110,10 +110,10 @@ document.addEventListener('DOMContentLoaded', () => {
       const randomLine = lines[Math.floor(Math.random() * lines.length)];
 
       isTalking = true;
-      buddySprite.src = '/asset/sprites/Skye_Talking.gif';
+      buddySprite.src = '/project/asset/sprites/Skye_Talking.gif';
       typeDialogue(randomLine);
       setTimeout(() => {
-        buddySprite.src = '/asset/sprites/Skye_Idle.gif';
+        buddySprite.src = '/project/asset/sprites/Skye_Idle.gif';
         isTalking = false;
       }, 3000);
     });
